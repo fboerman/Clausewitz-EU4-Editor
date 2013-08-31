@@ -1,0 +1,9 @@
+d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\bin\Release\v1.0.exe.config
+d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\bin\Release\v1.0.exe
+d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\bin\Release\v1.0.pdb
+d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Release\v1.0.csprojResolveAssemblyReference.cache
+d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Release\v1._0.main.resources
+d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Release\v1._0.Properties.Resources.resources
+d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Release\v1.0.csproj.GenerateResource.Cache
+d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Release\v1.0.exe
+d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Release\v1.0.pdb
