@@ -17,6 +17,7 @@ namespace v1._0
         List<List<string>> Religions = new List<List<string>>();
         List<List<string>> Cultures = new List<List<string>>();
         List<string> Ideas = new List<string>();
+        List<string> Units = new List<string>();
 
         void FlipControls() //enables or disables the controls
         {
@@ -339,6 +340,14 @@ namespace v1._0
             }
             //and lastly an entry for the default idea group
             cmb_nationalideasgroup.Items.Add("default_idea");
+
+            //load the unittypes
+            string[] folder = Directory.GetFiles(eulocation + "\\common\\units\\");
+            foreach (string filename in folder)
+            {
+                string unit = Path.GetFileNameWithoutExtension(filename);
+                Units.Add(unit);
+            }
 
         }
 
@@ -669,13 +678,16 @@ namespace v1._0
                 else //if not then look into the file that is loaded by the engine after the 00_country_ideas.txt file: zz_group_ideas.txt
                 {
                     ideatag = SearchNationalGroup();
-                    LoadNationalIdeas(ideatag, File.ReadAllLines(eulocation + "\\common\\ideas\\zz_group_ideas.txt"));
                     cmb_nationalideasgroup.Text = ideatag;
                     if (ideatag == "") //if no ideagroup has been found load the default ideas
                     {
                         cmb_nationalideas.Items.Clear();
                         LoadNationalIdeas("default_ideas", File.ReadAllLines(eulocation + "\\common\\ideas\\zzz_default_idea.txt"));
                         cmb_nationalideasgroup.Text = "default_ideas";
+                    }
+                    else
+                    {
+                        LoadNationalIdeas(ideatag, File.ReadAllLines(eulocation + "\\common\\ideas\\zz_group_ideas.txt"));
                     }
                 }
             }
@@ -991,6 +1003,23 @@ namespace v1._0
                     cmb_culture.Items.Add(culture);
                 }
 
+            }
+        }
+
+        private void cmb_nationalideasgroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmb_nationalideas.Items.Clear();
+            if (cmb_nationalideasgroup.Text == "default_ideas")
+            {
+                LoadNationalIdeas("default_ideas", File.ReadAllLines(eulocation + "\\common\\ideas\\zzz_default_idea.txt"));
+            }
+            else
+            {
+                LoadNationalIdeas(cmb_nationalideasgroup.Text, File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt"));
+                if (cmb_nationalideas.Items.Count == 0)
+                {
+                    LoadNationalIdeas(cmb_nationalideasgroup.Text, File.ReadAllLines(eulocation + "\\common\\ideas\\zz_group_ideas.txt"));
+                }
             }
         }
     }

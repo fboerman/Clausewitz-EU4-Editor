@@ -531,6 +531,7 @@
             this.cmb_nationalideasgroup.Name = "cmb_nationalideasgroup";
             this.cmb_nationalideasgroup.Size = new System.Drawing.Size(121, 21);
             this.cmb_nationalideasgroup.TabIndex = 48;
+            this.cmb_nationalideasgroup.SelectedIndexChanged += new System.EventHandler(this.cmb_nationalideasgroup_SelectedIndexChanged);
             // 
             // bt_edit_nationalideasgroup
             // 
