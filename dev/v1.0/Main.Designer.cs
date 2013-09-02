@@ -79,6 +79,8 @@
             this.lbl_nationalideas = new System.Windows.Forms.Label();
             this.cmb_nationalideasgroup = new System.Windows.Forms.ComboBox();
             this.bt_edit_nationalideasgroup = new System.Windows.Forms.Button();
+            this.cmb_idea7 = new System.Windows.Forms.ComboBox();
+            this.cmb_idea8 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -422,6 +424,7 @@
             // 
             // cmb_idea1
             // 
+            this.cmb_idea1.Enabled = false;
             this.cmb_idea1.FormattingEnabled = true;
             this.cmb_idea1.Location = new System.Drawing.Point(236, 163);
             this.cmb_idea1.Name = "cmb_idea1";
@@ -459,7 +462,7 @@
             // 
             this.cmb_idea5.Enabled = false;
             this.cmb_idea5.FormattingEnabled = true;
-            this.cmb_idea5.Location = new System.Drawing.Point(237, 271);
+            this.cmb_idea5.Location = new System.Drawing.Point(235, 271);
             this.cmb_idea5.Name = "cmb_idea5";
             this.cmb_idea5.Size = new System.Drawing.Size(121, 21);
             this.cmb_idea5.TabIndex = 40;
@@ -468,7 +471,7 @@
             // 
             this.cmb_idea6.Enabled = false;
             this.cmb_idea6.FormattingEnabled = true;
-            this.cmb_idea6.Location = new System.Drawing.Point(237, 298);
+            this.cmb_idea6.Location = new System.Drawing.Point(235, 298);
             this.cmb_idea6.Name = "cmb_idea6";
             this.cmb_idea6.Size = new System.Drawing.Size(121, 21);
             this.cmb_idea6.TabIndex = 41;
@@ -539,11 +542,31 @@
             this.bt_edit_nationalideasgroup.Text = "Edit";
             this.bt_edit_nationalideasgroup.UseVisualStyleBackColor = true;
             // 
+            // cmb_idea7
+            // 
+            this.cmb_idea7.Enabled = false;
+            this.cmb_idea7.FormattingEnabled = true;
+            this.cmb_idea7.Location = new System.Drawing.Point(235, 325);
+            this.cmb_idea7.Name = "cmb_idea7";
+            this.cmb_idea7.Size = new System.Drawing.Size(121, 21);
+            this.cmb_idea7.TabIndex = 50;
+            // 
+            // cmb_idea8
+            // 
+            this.cmb_idea8.Enabled = false;
+            this.cmb_idea8.FormattingEnabled = true;
+            this.cmb_idea8.Location = new System.Drawing.Point(235, 352);
+            this.cmb_idea8.Name = "cmb_idea8";
+            this.cmb_idea8.Size = new System.Drawing.Size(121, 21);
+            this.cmb_idea8.TabIndex = 51;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 630);
+            this.Controls.Add(this.cmb_idea8);
+            this.Controls.Add(this.cmb_idea7);
             this.Controls.Add(this.bt_edit_nationalideasgroup);
             this.Controls.Add(this.cmb_nationalideasgroup);
             this.Controls.Add(this.lbl_nationalideas);
@@ -654,6 +677,8 @@
         private System.Windows.Forms.Label lbl_nationalideas;
         private System.Windows.Forms.ComboBox cmb_nationalideasgroup;
         private System.Windows.Forms.Button bt_edit_nationalideasgroup;
+        private System.Windows.Forms.ComboBox cmb_idea7;
+        private System.Windows.Forms.ComboBox cmb_idea8;
     }
 }
 
