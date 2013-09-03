@@ -81,6 +81,11 @@
             this.bt_edit_nationalideasgroup = new System.Windows.Forms.Button();
             this.cmb_idea7 = new System.Windows.Forms.ComboBox();
             this.cmb_idea8 = new System.Windows.Forms.ComboBox();
+            this.lb_units = new System.Windows.Forms.ListBox();
+            this.cmb_units = new System.Windows.Forms.ComboBox();
+            this.bt_add_unit = new System.Windows.Forms.Button();
+            this.bt_up = new System.Windows.Forms.Button();
+            this.bt_down = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -262,7 +267,7 @@
             // lbl_government
             // 
             this.lbl_government.AutoSize = true;
-            this.lbl_government.Location = new System.Drawing.Point(396, 89);
+            this.lbl_government.Location = new System.Drawing.Point(739, 145);
             this.lbl_government.Name = "lbl_government";
             this.lbl_government.Size = new System.Drawing.Size(66, 13);
             this.lbl_government.TabIndex = 18;
@@ -272,7 +277,7 @@
             // 
             this.cmb_government.Enabled = false;
             this.cmb_government.FormattingEnabled = true;
-            this.cmb_government.Location = new System.Drawing.Point(468, 88);
+            this.cmb_government.Location = new System.Drawing.Point(811, 144);
             this.cmb_government.Name = "cmb_government";
             this.cmb_government.Size = new System.Drawing.Size(121, 21);
             this.cmb_government.TabIndex = 19;
@@ -281,7 +286,7 @@
             // 
             this.cmb_religiongroup.Enabled = false;
             this.cmb_religiongroup.FormattingEnabled = true;
-            this.cmb_religiongroup.Location = new System.Drawing.Point(589, 169);
+            this.cmb_religiongroup.Location = new System.Drawing.Point(932, 225);
             this.cmb_religiongroup.Name = "cmb_religiongroup";
             this.cmb_religiongroup.Size = new System.Drawing.Size(121, 21);
             this.cmb_religiongroup.TabIndex = 21;
@@ -290,7 +295,7 @@
             // lbl_preligion
             // 
             this.lbl_preligion.AutoSize = true;
-            this.lbl_preligion.Location = new System.Drawing.Point(419, 172);
+            this.lbl_preligion.Location = new System.Drawing.Point(762, 228);
             this.lbl_preligion.Name = "lbl_preligion";
             this.lbl_preligion.Size = new System.Drawing.Size(43, 13);
             this.lbl_preligion.TabIndex = 20;
@@ -300,7 +305,7 @@
             // 
             this.cmb_culturegroup.Enabled = false;
             this.cmb_culturegroup.FormattingEnabled = true;
-            this.cmb_culturegroup.Location = new System.Drawing.Point(589, 115);
+            this.cmb_culturegroup.Location = new System.Drawing.Point(932, 171);
             this.cmb_culturegroup.Name = "cmb_culturegroup";
             this.cmb_culturegroup.Size = new System.Drawing.Size(121, 21);
             this.cmb_culturegroup.TabIndex = 23;
@@ -309,7 +314,7 @@
             // lbl_pculture
             // 
             this.lbl_pculture.AutoSize = true;
-            this.lbl_pculture.Location = new System.Drawing.Point(384, 118);
+            this.lbl_pculture.Location = new System.Drawing.Point(727, 174);
             this.lbl_pculture.Name = "lbl_pculture";
             this.lbl_pculture.Size = new System.Drawing.Size(81, 13);
             this.lbl_pculture.TabIndex = 22;
@@ -319,7 +324,7 @@
             // 
             this.cmb_technology.Enabled = false;
             this.cmb_technology.FormattingEnabled = true;
-            this.cmb_technology.Location = new System.Drawing.Point(471, 226);
+            this.cmb_technology.Location = new System.Drawing.Point(814, 282);
             this.cmb_technology.Name = "cmb_technology";
             this.cmb_technology.Size = new System.Drawing.Size(121, 21);
             this.cmb_technology.TabIndex = 25;
@@ -327,7 +332,7 @@
             // lbl_technology_group
             // 
             this.lbl_technology_group.AutoSize = true;
-            this.lbl_technology_group.Location = new System.Drawing.Point(370, 226);
+            this.lbl_technology_group.Location = new System.Drawing.Point(713, 282);
             this.lbl_technology_group.Name = "lbl_technology_group";
             this.lbl_technology_group.Size = new System.Drawing.Size(95, 13);
             this.lbl_technology_group.TabIndex = 24;
@@ -336,7 +341,7 @@
             // txt_capital
             // 
             this.txt_capital.Enabled = false;
-            this.txt_capital.Location = new System.Drawing.Point(470, 253);
+            this.txt_capital.Location = new System.Drawing.Point(813, 309);
             this.txt_capital.Name = "txt_capital";
             this.txt_capital.Size = new System.Drawing.Size(122, 20);
             this.txt_capital.TabIndex = 27;
@@ -344,7 +349,7 @@
             // lbl_capital
             // 
             this.lbl_capital.AutoSize = true;
-            this.lbl_capital.Location = new System.Drawing.Point(424, 256);
+            this.lbl_capital.Location = new System.Drawing.Point(767, 312);
             this.lbl_capital.Name = "lbl_capital";
             this.lbl_capital.Size = new System.Drawing.Size(41, 13);
             this.lbl_capital.TabIndex = 26;
@@ -353,7 +358,7 @@
             // lbl_culturegroup
             // 
             this.lbl_culturegroup.AutoSize = true;
-            this.lbl_culturegroup.Location = new System.Drawing.Point(514, 118);
+            this.lbl_culturegroup.Location = new System.Drawing.Point(857, 174);
             this.lbl_culturegroup.Name = "lbl_culturegroup";
             this.lbl_culturegroup.Size = new System.Drawing.Size(69, 13);
             this.lbl_culturegroup.TabIndex = 28;
@@ -362,7 +367,7 @@
             // lbl_culture
             // 
             this.lbl_culture.AutoSize = true;
-            this.lbl_culture.Location = new System.Drawing.Point(541, 145);
+            this.lbl_culture.Location = new System.Drawing.Point(884, 201);
             this.lbl_culture.Name = "lbl_culture";
             this.lbl_culture.Size = new System.Drawing.Size(42, 13);
             this.lbl_culture.TabIndex = 30;
@@ -372,7 +377,7 @@
             // 
             this.cmb_culture.Enabled = false;
             this.cmb_culture.FormattingEnabled = true;
-            this.cmb_culture.Location = new System.Drawing.Point(589, 142);
+            this.cmb_culture.Location = new System.Drawing.Point(932, 198);
             this.cmb_culture.Name = "cmb_culture";
             this.cmb_culture.Size = new System.Drawing.Size(121, 21);
             this.cmb_culture.TabIndex = 29;
@@ -380,7 +385,7 @@
             // lbl_religion
             // 
             this.lbl_religion.AutoSize = true;
-            this.lbl_religion.Location = new System.Drawing.Point(541, 199);
+            this.lbl_religion.Location = new System.Drawing.Point(884, 255);
             this.lbl_religion.Name = "lbl_religion";
             this.lbl_religion.Size = new System.Drawing.Size(43, 13);
             this.lbl_religion.TabIndex = 32;
@@ -390,7 +395,7 @@
             // 
             this.cmb_religion.Enabled = false;
             this.cmb_religion.FormattingEnabled = true;
-            this.cmb_religion.Location = new System.Drawing.Point(589, 196);
+            this.cmb_religion.Location = new System.Drawing.Point(932, 252);
             this.cmb_religion.Name = "cmb_religion";
             this.cmb_religion.Size = new System.Drawing.Size(121, 21);
             this.cmb_religion.TabIndex = 31;
@@ -398,7 +403,7 @@
             // lbl_religiongroup
             // 
             this.lbl_religiongroup.AutoSize = true;
-            this.lbl_religiongroup.Location = new System.Drawing.Point(514, 172);
+            this.lbl_religiongroup.Location = new System.Drawing.Point(857, 228);
             this.lbl_religiongroup.Name = "lbl_religiongroup";
             this.lbl_religiongroup.Size = new System.Drawing.Size(70, 13);
             this.lbl_religiongroup.TabIndex = 33;
@@ -407,7 +412,7 @@
             // txt_mercantilism
             // 
             this.txt_mercantilism.Enabled = false;
-            this.txt_mercantilism.Location = new System.Drawing.Point(471, 279);
+            this.txt_mercantilism.Location = new System.Drawing.Point(814, 335);
             this.txt_mercantilism.Name = "txt_mercantilism";
             this.txt_mercantilism.Size = new System.Drawing.Size(122, 20);
             this.txt_mercantilism.TabIndex = 35;
@@ -416,7 +421,7 @@
             // 
             this.lbl_mercantilism.AutoSize = true;
             this.lbl_mercantilism.Cursor = System.Windows.Forms.Cursors.UpArrow;
-            this.lbl_mercantilism.Location = new System.Drawing.Point(389, 282);
+            this.lbl_mercantilism.Location = new System.Drawing.Point(732, 338);
             this.lbl_mercantilism.Name = "lbl_mercantilism";
             this.lbl_mercantilism.Size = new System.Drawing.Size(67, 13);
             this.lbl_mercantilism.TabIndex = 34;
@@ -561,11 +566,62 @@
             this.cmb_idea8.Size = new System.Drawing.Size(121, 21);
             this.cmb_idea8.TabIndex = 51;
             // 
+            // lb_units
+            // 
+            this.lb_units.FormattingEnabled = true;
+            this.lb_units.Location = new System.Drawing.Point(496, 86);
+            this.lb_units.Name = "lb_units";
+            this.lb_units.Size = new System.Drawing.Size(118, 290);
+            this.lb_units.TabIndex = 52;
+            // 
+            // cmb_units
+            // 
+            this.cmb_units.FormattingEnabled = true;
+            this.cmb_units.Location = new System.Drawing.Point(496, 382);
+            this.cmb_units.Name = "cmb_units";
+            this.cmb_units.Size = new System.Drawing.Size(121, 21);
+            this.cmb_units.TabIndex = 53;
+            // 
+            // bt_add_unit
+            // 
+            this.bt_add_unit.Location = new System.Drawing.Point(623, 380);
+            this.bt_add_unit.Name = "bt_add_unit";
+            this.bt_add_unit.Size = new System.Drawing.Size(75, 23);
+            this.bt_add_unit.TabIndex = 54;
+            this.bt_add_unit.Text = "Add";
+            this.bt_add_unit.UseVisualStyleBackColor = true;
+            this.bt_add_unit.Click += new System.EventHandler(this.bt_add_unit_Click);
+            // 
+            // bt_up
+            // 
+            this.bt_up.Location = new System.Drawing.Point(620, 83);
+            this.bt_up.Name = "bt_up";
+            this.bt_up.Size = new System.Drawing.Size(75, 23);
+            this.bt_up.TabIndex = 55;
+            this.bt_up.Text = "/\\";
+            this.bt_up.UseVisualStyleBackColor = true;
+            this.bt_up.Click += new System.EventHandler(this.bt_up_Click);
+            // 
+            // bt_down
+            // 
+            this.bt_down.Location = new System.Drawing.Point(620, 112);
+            this.bt_down.Name = "bt_down";
+            this.bt_down.Size = new System.Drawing.Size(75, 23);
+            this.bt_down.TabIndex = 56;
+            this.bt_down.Text = "\\/";
+            this.bt_down.UseVisualStyleBackColor = true;
+            this.bt_down.Click += new System.EventHandler(this.bt_down_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 630);
+            this.Controls.Add(this.bt_down);
+            this.Controls.Add(this.bt_up);
+            this.Controls.Add(this.bt_add_unit);
+            this.Controls.Add(this.cmb_units);
+            this.Controls.Add(this.lb_units);
             this.Controls.Add(this.cmb_idea8);
             this.Controls.Add(this.cmb_idea7);
             this.Controls.Add(this.bt_edit_nationalideasgroup);
@@ -680,6 +736,11 @@
         private System.Windows.Forms.Button bt_edit_nationalideasgroup;
         private System.Windows.Forms.ComboBox cmb_idea7;
         private System.Windows.Forms.ComboBox cmb_idea8;
+        private System.Windows.Forms.ListBox lb_units;
+        private System.Windows.Forms.ComboBox cmb_units;
+        private System.Windows.Forms.Button bt_add_unit;
+        private System.Windows.Forms.Button bt_up;
+        private System.Windows.Forms.Button bt_down;
     }
 }
 

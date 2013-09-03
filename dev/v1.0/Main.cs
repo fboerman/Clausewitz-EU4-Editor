@@ -17,7 +17,6 @@ namespace v1._0
         List<List<string>> Religions = new List<List<string>>();
         List<List<string>> Cultures = new List<List<string>>();
         List<string> Ideas = new List<string>();
-        List<string> Units = new List<string>();
 
         void FlipControls() //enables or disables the controls
         {
@@ -346,7 +345,7 @@ namespace v1._0
             foreach (string filename in folder)
             {
                 string unit = Path.GetFileNameWithoutExtension(filename);
-                Units.Add(unit);
+                cmb_units.Items.Add(unit);
             }
 
         }
@@ -504,6 +503,7 @@ namespace v1._0
                 if (line.Contains("graphical_culture")) //just extract the value after the = char
                 {
                     txt_gfx.Text = line.Split('=')[1].Trim();
+                    continue;
                 }
                 if (line.Contains("color")) //if its the color line then split it at spaces and determine wich part is numeric
                 {
@@ -520,144 +520,70 @@ namespace v1._0
                     txt_colour_r.Text = colours[0];
                     txt_colour_g.Text = colours[1];
                     txt_colour_b.Text = colours[2];
-
+                    continue;
                 }
                 if (line.Contains("historical_idea_groups"))
                 {
                     i++;
-                    rawline = file[i];
-                    line = rawline.Split('#')[0];
-                    if (line == "")
+                    int ideanum = 0;
+                    for (; !file[i].Contains('}');i++ )
                     {
-                        continue;
+                        rawline = file[i];
+                        line = rawline.Split('#')[0];
+                        if (line == "")
+                        {
+                            continue;
+                        }
+                        ideanum++;
+                        string idea = line.Trim('\t');
+                        if (Ideas.Contains(idea))
+                        {
+                            switch (ideanum)
+                            { 
+                                case 1:
+                                    cmb_idea1.Text = idea;
+                                    break;
+                                case 2:
+                                    cmb_idea2.Text = idea;
+                                    break;
+                                case 3:
+                                    cmb_idea3.Text = idea;
+                                    break;
+                                case 4:
+                                    cmb_idea4.Text = idea;
+                                    break;
+                                case 5:
+                                    cmb_idea5.Text = idea;
+                                    break;
+                                case 6:
+                                    cmb_idea6.Text = idea;
+                                    break;
+                                case 7:
+                                    cmb_idea7.Text = idea;
+                                    break;
+                                case 8:
+                                    cmb_idea8.Text = idea;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid idea " + ideanum + " in history file", "Error");
+                        }
                     }
-                    string idea = line.Trim('\t');
-                    if (Ideas.Contains(idea))
-                    {
-                        cmb_idea1.Text = line.Trim('\t');
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid idea 1 in history file", "Error");
-                    }
-
+                    continue;
+                }
+                if (line.Contains("historical_units"))
+                {
                     i++;
-                    rawline = file[i];
-                    line = rawline.Split('#')[0];
-                    if (line == "")
+                    for (; !file[i].Contains('}'); i++)
                     {
-                        continue;
-                    }
-                    idea = line.Trim('\t');
-                    if (Ideas.Contains(idea))
-                    {
-                        cmb_idea2.Text = line.Trim('\t');
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid idea 2 in history file", "Error");
-                    }
-
-                    i++;
-                    rawline = file[i];
-                    line = rawline.Split('#')[0];
-                    if (line == "")
-                    {
-                        continue;
-                    }
-                    idea = line.Trim('\t');
-                    if (Ideas.Contains(idea))
-                    {
-                        cmb_idea3.Text = line.Trim('\t');
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid idea 3 in history file", "Error");
-                    }
-
-                    i++;
-                    rawline = file[i];
-                    line = rawline.Split('#')[0];
-                    if (line == "")
-                    {
-                        continue;
-                    }
-                    idea = line.Trim('\t');
-                    if (Ideas.Contains(idea))
-                    {
-                        cmb_idea4.Text = line.Trim('\t');
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid idea 4 in history file", "Error");
-                    }
-
-                    i++;
-                    rawline = file[i];
-                    line = rawline.Split('#')[0];
-                    if (line == "")
-                    {
-                        continue;
-                    }
-                    idea = line.Trim('\t');
-                    if (Ideas.Contains(idea))
-                    {
-                        cmb_idea5.Text = line.Trim('\t');
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid idea 5 in history file", "Error");
-                    }
-
-                    i++;
-                    rawline = file[i];
-                    line = rawline.Split('#')[0];
-                    if (line == "")
-                    {
-                        continue;
-                    }
-                    idea = line.Trim('\t');
-                    if (Ideas.Contains(idea))
-                    {
-                        cmb_idea6.Text = line.Trim('\t');
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid idea 6 in history file", "Error");
-                    }
-
-                    i++;
-                    rawline = file[i];
-                    line = rawline.Split('#')[0];
-                    if (line == "")
-                    {
-                        continue;
-                    }
-                    idea = line.Trim('\t');
-                    if (Ideas.Contains(idea))
-                    {
-                        cmb_idea7.Text = line.Trim('\t');
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid idea 7 in history file", "Error");
-                    }
-
-                    i++;
-                    rawline = file[i];
-                    line = rawline.Split('#')[0];
-                    if (line == "")
-                    {
-                        continue;
-                    }
-                    idea = line.Trim('\t');
-                    if (Ideas.Contains(idea))
-                    {
-                        cmb_idea8.Text = line.Trim('\t');
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid idea 8 in history file", "Error");
+                        line = file[i].Split('#')[0].Trim('\t');
+                        if (line == "")
+                        {
+                            continue;
+                        }
+                        lb_units.Items.Add(line);
                     }
                 }
             }
@@ -1020,6 +946,41 @@ namespace v1._0
                 {
                     LoadNationalIdeas(cmb_nationalideasgroup.Text, File.ReadAllLines(eulocation + "\\common\\ideas\\zz_group_ideas.txt"));
                 }
+            }
+        }
+
+        private void bt_up_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = lb_units.SelectedIndex;
+            if (selectedIndex > 0 & selectedIndex != -1)
+            {
+                lb_units.Items.Insert(selectedIndex - 1, lb_units.Items[selectedIndex]);
+                lb_units.Items.RemoveAt(selectedIndex + 1);
+                lb_units.SelectedIndex = selectedIndex - 1;
+            }
+        }
+
+        private void bt_down_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = lb_units.SelectedIndex;
+            if (selectedIndex < lb_units.Items.Count - 1 & selectedIndex != -1)
+            {
+                lb_units.Items.Insert(selectedIndex + 2, lb_units.Items[selectedIndex]);
+                lb_units.Items.RemoveAt(selectedIndex);
+                lb_units.SelectedIndex = selectedIndex + 1;
+
+            }
+        }
+
+        private void bt_add_unit_Click(object sender, EventArgs e)
+        {
+            if (!lb_units.Items.Contains(cmb_units.Text))
+            {
+                lb_units.Items.Add(cmb_units.Text);
+            }
+            else
+            {
+                MessageBox.Show("Unit is already in list", "Error");
             }
         }
     }
