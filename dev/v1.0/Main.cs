@@ -11,6 +11,7 @@ using System.IO;
 
 namespace v1._0
 {
+    
     public partial class main : Form
     {
         string eulocation; //the location of the game
@@ -18,39 +19,8 @@ namespace v1._0
         List<List<string>> Cultures = new List<List<string>>();
         List<string> Ideas = new List<string>();
 
-        void FlipControls() //enables or disables the controls
-        {
-            bt_loadc.Enabled = !bt_loadc.Enabled;
-            cmb_countries.Enabled = !cmb_countries.Enabled;
-            bt_save.Enabled = !bt_save.Enabled;
-            txt_capital.Enabled = !txt_capital.Enabled;
-            txt_colour_b.Enabled = !txt_colour_b.Enabled;
-            txt_colour_g.Enabled = !txt_colour_g.Enabled;
-            txt_colour_r.Enabled = !txt_colour_r.Enabled;
-            txt_gfx.Enabled = !txt_gfx.Enabled;
-            cmb_culturegroup.Enabled = !cmb_culturegroup.Enabled;
-            cmb_culture.Enabled = !cmb_culture.Enabled;
-            cmb_religiongroup.Enabled = !cmb_religiongroup.Enabled;
-            cmb_religion.Enabled = !cmb_religion.Enabled;
-            cmb_technology.Enabled = !cmb_technology.Enabled;
-            cmb_government.Enabled = !cmb_government.Enabled;
-            txt_tag.Enabled = !txt_tag.Enabled;
-            txt_mercantilism.Enabled = !txt_mercantilism.Enabled;
-            cmb_nationalideasgroup.Enabled = !cmb_nationalideasgroup.Enabled;
-            cmb_nationalideas.Enabled = !cmb_nationalideas.Enabled;
-            cmb_idea1.Enabled = !cmb_idea1.Enabled;
-            cmb_idea2.Enabled = !cmb_idea2.Enabled;
-            cmb_idea3.Enabled = !cmb_idea3.Enabled;
-            cmb_idea4.Enabled = !cmb_idea4.Enabled;
-            cmb_idea5.Enabled = !cmb_idea5.Enabled;
-            cmb_idea6.Enabled = !cmb_idea6.Enabled;
-            cmb_idea7.Enabled = !cmb_idea7.Enabled;
-            cmb_idea8.Enabled = !cmb_idea8.Enabled;
-        }
-
         int ReadSyntax(int linenum, string[] file) //used to read from curly bracket to curly bracket, returns the line number of the closing bracket, if end of file then returns 0
         {
-
             for (; linenum < file.Length; linenum++)
             {
                 string line = file[linenum];
@@ -126,7 +96,7 @@ namespace v1._0
                 string line = file[i];
                 if (!line.Contains('#')) //not a comment line and not a religiongroup
                 {
-                    
+
                     foreach (string group in cmb_religiongroup.Items) //go through all the religiongroups
                     {
                         if (line.Contains(group))//check if the current line is the start of a new religiongroup, then read the codeblock of this group
@@ -147,8 +117,8 @@ namespace v1._0
                                     }
                                 }
                                 else
-                                { 
-                                    if(line.Contains('}') && !line.Contains('\t'))
+                                {
+                                    if (line.Contains('}') && !line.Contains('\t'))
                                     {
                                         i = z;
                                         break;
@@ -264,7 +234,7 @@ namespace v1._0
                     continue;
                 }
                 line = parts[0];
-                if(line.Contains('{') && !line.Contains('\t'))
+                if (line.Contains('{') && !line.Contains('\t'))
                 {
                     parts = line.Split(' ');
                     string idea = parts[0].TrimStart('\t');
@@ -283,7 +253,7 @@ namespace v1._0
                     {
                         MessageBox.Show("Invalid syntax in basic ideas file", "Error");
                         return;
-                    } 
+                    }
                 }
             }
 
@@ -352,7 +322,7 @@ namespace v1._0
 
         void LoadGame() //loads the options for countries into the controls
         {
-            
+
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() == DialogResult.OK) //let the user specify the location of eu4
             {
@@ -366,9 +336,6 @@ namespace v1._0
                 }
                 //other options
                 LoadCountryOptions();
-                bt_load.Enabled = false;
-                bt_loadc.Enabled = true;
-                cmb_countries.Enabled = true;
             }
 
         }
@@ -492,7 +459,7 @@ namespace v1._0
             }
             //read the info from the common/countries/<name>.txt file
             file = File.ReadAllLines(eulocation + "\\common\\countries\\" + cmb_countries.Text + ".txt");
-            for (int i = 0; i < file.Length; i++ )
+            for (int i = 0; i < file.Length; i++)
             {
                 string rawline = file[i];
                 string line = rawline.Split('#')[0];
@@ -526,7 +493,7 @@ namespace v1._0
                 {
                     i++;
                     int ideanum = 0;
-                    for (; !file[i].Contains('}');i++ )
+                    for (; !file[i].Contains('}'); i++)
                     {
                         rawline = file[i];
                         line = rawline.Split('#')[0];
@@ -539,7 +506,7 @@ namespace v1._0
                         if (Ideas.Contains(idea))
                         {
                             switch (ideanum)
-                            { 
+                            {
                                 case 1:
                                     cmb_idea1.Text = idea;
                                     break;
@@ -618,8 +585,9 @@ namespace v1._0
                 }
             }
 
-
-            FlipControls();
+            //clear the selected idea
+            cmb_nationalideas.Text = "";
+            
         }
 
         string SearchNationalGroup() //searches for the ideagroup from the zz_group_ideas.txt, returns the name of the group if found
@@ -720,7 +688,7 @@ namespace v1._0
                                 string keyword = requirement.Split(':')[0];
                                 string value = requirement.Split(':')[1];
                                 switch (keyword)
-                                { 
+                                {
                                     case "government":
                                         if (cmb_government.Text == value)
                                         {
@@ -760,7 +728,7 @@ namespace v1._0
                                 }
                             }
                             //if there is no OR block then check the individual requirements
-                            if ((government == "" || government == cmb_government.Text || (government == "theocracy" && cmb_government.Text == "theocratic_government") ) && (religion_group == "" || religion_group == cmb_religiongroup.Text) && (culture_group == "" || culture_group == cmb_culturegroup.Text) && (tag == "" || txt_tag.Text == tag) && OR.Count == 0) 
+                            if ((government == "" || government == cmb_government.Text || (government == "theocracy" && cmb_government.Text == "theocratic_government")) && (religion_group == "" || religion_group == cmb_religiongroup.Text) && (culture_group == "" || culture_group == cmb_culturegroup.Text) && (tag == "" || txt_tag.Text == tag) && OR.Count == 0)
                             {
                                 return ideatag;
                             }
@@ -774,7 +742,7 @@ namespace v1._0
                             }
                         }
                     }
-                    
+
                 }
             }
             return "";
@@ -782,7 +750,7 @@ namespace v1._0
 
         string SearchNationalIdeas() //searches the tag of an ideagroup of the selected country, returns that tag if found and empty string otherwise
         {
-            string []file = File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt");
+            string[] file = File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt");
             for (int i = 0; i < file.Length; i++)
             {
                 string[] parts = file[i].Split('#');
@@ -867,6 +835,36 @@ namespace v1._0
             FlipControls();
         }
 
+        void FlipControls() //enables or disables the controls
+        {
+            txt_capital.Enabled = !txt_capital.Enabled;
+            txt_colour_b.Enabled = !txt_colour_b.Enabled;
+            txt_colour_g.Enabled = !txt_colour_g.Enabled;
+            txt_colour_r.Enabled = !txt_colour_r.Enabled;
+            txt_gfx.Enabled = !txt_gfx.Enabled;
+            cmb_culturegroup.Enabled = !cmb_culturegroup.Enabled;
+            cmb_culture.Enabled = !cmb_culture.Enabled;
+            cmb_religiongroup.Enabled = !cmb_religiongroup.Enabled;
+            cmb_religion.Enabled = !cmb_religion.Enabled;
+            cmb_technology.Enabled = !cmb_technology.Enabled;
+            cmb_government.Enabled = !cmb_government.Enabled;
+            txt_tag.Enabled = !txt_tag.Enabled;
+            txt_mercantilism.Enabled = !txt_mercantilism.Enabled;
+            cmb_nationalideasgroup.Enabled = !cmb_nationalideasgroup.Enabled;
+            cmb_nationalideas.Enabled = !cmb_nationalideas.Enabled;
+            cmb_idea1.Enabled = !cmb_idea1.Enabled;
+            cmb_idea2.Enabled = !cmb_idea2.Enabled;
+            cmb_idea3.Enabled = !cmb_idea3.Enabled;
+            cmb_idea4.Enabled = !cmb_idea4.Enabled;
+            cmb_idea5.Enabled = !cmb_idea5.Enabled;
+            cmb_idea6.Enabled = !cmb_idea6.Enabled;
+            cmb_idea7.Enabled = !cmb_idea7.Enabled;
+            cmb_idea8.Enabled = !cmb_idea8.Enabled;
+            bt_new_nationalideasgroup.Enabled = !bt_new_nationalideasgroup.Enabled;
+            bt_edit_nationalideasgroup.Enabled = !bt_edit_nationalideasgroup.Enabled;
+            bt_edit_nationalidea.Enabled = !bt_edit_nationalidea.Enabled;
+        }
+
         public main()
         {
             InitializeComponent();
@@ -885,6 +883,10 @@ namespace v1._0
         private void bt_load_Click(object sender, EventArgs e)
         {
             LoadGame();
+            bt_load.Enabled = false;
+            bt_loadc.Enabled = true;
+            bt_save.Enabled = true;
+            cmb_countries.Enabled = true;
         }
 
         private void bt_save_Click(object sender, EventArgs e)
@@ -900,6 +902,7 @@ namespace v1._0
         private void bt_loadc_Click(object sender, EventArgs e)
         {
             LoadCountry();
+            FlipControls();
         }
 
         private void cmb_religiongroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -981,6 +984,37 @@ namespace v1._0
             else
             {
                 MessageBox.Show("Unit is already in list", "Error");
+            }
+        }
+
+        private void bt_delete_Click(object sender, EventArgs e)
+        {
+            lb_units.Items.RemoveAt(lb_units.SelectedIndex);
+        }
+
+        private void bt_edit_nationalidea_Click(object sender, EventArgs e)
+        {
+            List<string> ideas = new List<string>();
+            List<string> groups = new List<string>();
+
+            if (cmb_nationalideas.Text != "")
+            {
+                foreach (string group in cmb_nationalideasgroup.Items)
+                {
+                    groups.Add(group);
+                }
+
+                foreach (string idea in cmb_nationalideas.Items)
+                {
+                    ideas.Add(idea);
+                }
+
+                NationalIdeaEditor form = new NationalIdeaEditor(ideas, cmb_nationalideasgroup.Text, cmb_nationalideas.Text, eulocation);
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("First select an idea to edit, you can change this selection in the ideaeditor", "Error");
             }
         }
     }

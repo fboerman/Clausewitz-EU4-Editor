@@ -86,6 +86,8 @@
             this.bt_add_unit = new System.Windows.Forms.Button();
             this.bt_up = new System.Windows.Forms.Button();
             this.bt_down = new System.Windows.Forms.Button();
+            this.bt_delete = new System.Windows.Forms.Button();
+            this.lbl_hunits = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -499,6 +501,7 @@
             this.bt_edit_nationalidea.TabIndex = 43;
             this.bt_edit_nationalidea.Text = "Edit";
             this.bt_edit_nationalidea.UseVisualStyleBackColor = true;
+            this.bt_edit_nationalidea.Click += new System.EventHandler(this.bt_edit_nationalidea_Click);
             // 
             // bt_new_nationalideasgroup
             // 
@@ -612,11 +615,32 @@
             this.bt_down.UseVisualStyleBackColor = true;
             this.bt_down.Click += new System.EventHandler(this.bt_down_Click);
             // 
+            // bt_delete
+            // 
+            this.bt_delete.Location = new System.Drawing.Point(620, 141);
+            this.bt_delete.Name = "bt_delete";
+            this.bt_delete.Size = new System.Drawing.Size(75, 23);
+            this.bt_delete.TabIndex = 57;
+            this.bt_delete.Text = "Delete";
+            this.bt_delete.UseVisualStyleBackColor = true;
+            this.bt_delete.Click += new System.EventHandler(this.bt_delete_Click);
+            // 
+            // lbl_hunits
+            // 
+            this.lbl_hunits.AutoSize = true;
+            this.lbl_hunits.Location = new System.Drawing.Point(404, 86);
+            this.lbl_hunits.Name = "lbl_hunits";
+            this.lbl_hunits.Size = new System.Drawing.Size(80, 13);
+            this.lbl_hunits.TabIndex = 58;
+            this.lbl_hunits.Text = "Historical Units:";
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 630);
+            this.Controls.Add(this.lbl_hunits);
+            this.Controls.Add(this.bt_delete);
             this.Controls.Add(this.bt_down);
             this.Controls.Add(this.bt_up);
             this.Controls.Add(this.bt_add_unit);
@@ -741,6 +765,8 @@
         private System.Windows.Forms.Button bt_add_unit;
         private System.Windows.Forms.Button bt_up;
         private System.Windows.Forms.Button bt_down;
+        private System.Windows.Forms.Button bt_delete;
+        private System.Windows.Forms.Label lbl_hunits;
     }
 }
 
