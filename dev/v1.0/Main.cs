@@ -1017,5 +1017,35 @@ namespace v1._0
                 MessageBox.Show("First select an idea to edit, you can change this selection in the ideaeditor", "Error");
             }
         }
+
+        private void lbl_tag_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_national_ideas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_technology_group_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
