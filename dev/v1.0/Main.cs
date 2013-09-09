@@ -808,7 +808,10 @@ namespace v1._0
                         {
                             parts = line.Split(' ');
                             string idea = parts[0].TrimStart('\t');
-                            cmb_nationalideas.Items.Add(idea);
+                            if (idea != "trigger")
+                            {
+                                cmb_nationalideas.Items.Add(idea);
+                            }
                             z = ReadSyntax(z + 1, file);
                             if (z == 0)
                             {
@@ -863,6 +866,12 @@ namespace v1._0
             bt_new_nationalideasgroup.Enabled = !bt_new_nationalideasgroup.Enabled;
             bt_edit_nationalideasgroup.Enabled = !bt_edit_nationalideasgroup.Enabled;
             bt_edit_nationalidea.Enabled = !bt_edit_nationalidea.Enabled;
+            lb_units.Enabled = !lb_units.Enabled;
+            cmb_units.Enabled = !cmb_units.Enabled;
+            bt_up.Enabled = !bt_up.Enabled;
+            bt_down.Enabled = !bt_down.Enabled;
+            bt_delete.Enabled = !bt_delete.Enabled;
+            bt_add_unit.Enabled = !bt_add_unit.Enabled;
         }
 
         public main()
@@ -870,23 +879,20 @@ namespace v1._0
             InitializeComponent();
         }
 
-        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadGame();
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void bt_load_Click(object sender, EventArgs e)
         {
-            LoadGame();
-            bt_load.Enabled = false;
-            bt_loadc.Enabled = true;
-            bt_save.Enabled = true;
-            cmb_countries.Enabled = true;
+            try
+            {
+                LoadGame();
+                bt_load.Enabled = false;
+                bt_loadc.Enabled = true;
+                bt_save.Enabled = true;
+                cmb_countries.Enabled = true;
+            }
+            catch
+            {
+                MessageBox.Show("Gamefiles not found in this directory.", "Error");
+            }
         }
 
         private void bt_save_Click(object sender, EventArgs e)
@@ -894,15 +900,17 @@ namespace v1._0
             SaveCountry();
         }
 
-        private void saveCountryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveCountry();
-        }
-
         private void bt_loadc_Click(object sender, EventArgs e)
         {
-            LoadCountry();
-            FlipControls();
+            try
+            {
+                LoadCountry();
+                FlipControls();
+            }
+            catch
+            {
+                MessageBox.Show("Country files not found in selected directory.", "Error");
+            }
         }
 
         private void cmb_religiongroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -938,6 +946,8 @@ namespace v1._0
         private void cmb_nationalideasgroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmb_nationalideas.Items.Clear();
+            cmb_nationalideas.Text = "";
+
             if (cmb_nationalideasgroup.Text == "default_ideas")
             {
                 LoadNationalIdeas("default_ideas", File.ReadAllLines(eulocation + "\\common\\ideas\\zzz_default_idea.txt"));
@@ -1018,34 +1028,20 @@ namespace v1._0
             }
         }
 
-        private void lbl_tag_Click(object sender, EventArgs e)
+        private void bt_edit_nationalideasgroup_Click(object sender, EventArgs e)
         {
-
+            List<string> groups = new List<string>();
+            foreach (string group in cmb_nationalideasgroup.Items)
+            {
+                groups.Add(group);
+            }
+            NationalIdeaGroupEditor form = new NationalIdeaGroupEditor(groups, cmb_nationalideasgroup.Text, eulocation);
+            form.ShowDialog();
         }
 
-        private void lbl_national_ideas_Click(object sender, EventArgs e)
+        private void bt_exit_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void main_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_technology_group_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox4_Enter(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
     }
 }

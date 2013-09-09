@@ -28,16 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveCountryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmb_countries = new System.Windows.Forms.ComboBox();
-            this.lbl_country = new System.Windows.Forms.Label();
-            this.bt_load = new System.Windows.Forms.Button();
-            this.bt_loadc = new System.Windows.Forms.Button();
-            this.bt_save = new System.Windows.Forms.Button();
             this.lbl_gfx = new System.Windows.Forms.Label();
             this.txt_gfx = new System.Windows.Forms.TextBox();
             this.txt_colour_r = new System.Windows.Forms.TextBox();
@@ -89,7 +79,11 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lbl_national_ideas = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.menuStrip1.SuspendLayout();
+            this.cmb_countries = new System.Windows.Forms.ComboBox();
+            this.bt_load = new System.Windows.Forms.Button();
+            this.bt_loadc = new System.Windows.Forms.Button();
+            this.bt_save = new System.Windows.Forms.Button();
+            this.bt_exit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -97,100 +91,10 @@
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gameToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1065, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // gameToolStripMenuItem
-            // 
-            this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.saveCountryToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.gameToolStripMenuItem.Text = "Country";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.newToolStripMenuItem.Text = "New";
-            // 
-            // saveCountryToolStripMenuItem
-            // 
-            this.saveCountryToolStripMenuItem.Name = "saveCountryToolStripMenuItem";
-            this.saveCountryToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.saveCountryToolStripMenuItem.Text = "Save";
-            this.saveCountryToolStripMenuItem.Click += new System.EventHandler(this.saveCountryToolStripMenuItem_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // cmb_countries
-            // 
-            this.cmb_countries.Enabled = false;
-            this.cmb_countries.FormattingEnabled = true;
-            this.cmb_countries.Location = new System.Drawing.Point(139, 48);
-            this.cmb_countries.Name = "cmb_countries";
-            this.cmb_countries.Size = new System.Drawing.Size(133, 21);
-            this.cmb_countries.TabIndex = 1;
-            // 
-            // lbl_country
-            // 
-            this.lbl_country.AutoSize = true;
-            this.lbl_country.Location = new System.Drawing.Point(136, 32);
-            this.lbl_country.Name = "lbl_country";
-            this.lbl_country.Size = new System.Drawing.Size(46, 13);
-            this.lbl_country.TabIndex = 2;
-            this.lbl_country.Text = "Country:";
-            // 
-            // bt_load
-            // 
-            this.bt_load.Location = new System.Drawing.Point(12, 27);
-            this.bt_load.Name = "bt_load";
-            this.bt_load.Size = new System.Drawing.Size(93, 23);
-            this.bt_load.TabIndex = 3;
-            this.bt_load.Text = "Load Game";
-            this.bt_load.UseVisualStyleBackColor = true;
-            this.bt_load.Click += new System.EventHandler(this.bt_load_Click);
-            // 
-            // bt_loadc
-            // 
-            this.bt_loadc.Enabled = false;
-            this.bt_loadc.Location = new System.Drawing.Point(12, 56);
-            this.bt_loadc.Name = "bt_loadc";
-            this.bt_loadc.Size = new System.Drawing.Size(93, 23);
-            this.bt_loadc.TabIndex = 4;
-            this.bt_loadc.Text = "Load Country";
-            this.bt_loadc.UseVisualStyleBackColor = true;
-            this.bt_loadc.Click += new System.EventHandler(this.bt_loadc_Click);
-            // 
-            // bt_save
-            // 
-            this.bt_save.Enabled = false;
-            this.bt_save.Location = new System.Drawing.Point(13, 86);
-            this.bt_save.Name = "bt_save";
-            this.bt_save.Size = new System.Drawing.Size(92, 23);
-            this.bt_save.TabIndex = 5;
-            this.bt_save.Text = "Save Country";
-            this.bt_save.UseVisualStyleBackColor = true;
-            this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
-            // 
             // lbl_gfx
             // 
             this.lbl_gfx.AutoSize = true;
-            this.lbl_gfx.Location = new System.Drawing.Point(139, 112);
+            this.lbl_gfx.Location = new System.Drawing.Point(164, 55);
             this.lbl_gfx.Name = "lbl_gfx";
             this.lbl_gfx.Size = new System.Drawing.Size(91, 13);
             this.lbl_gfx.TabIndex = 6;
@@ -199,7 +103,7 @@
             // txt_gfx
             // 
             this.txt_gfx.Enabled = false;
-            this.txt_gfx.Location = new System.Drawing.Point(236, 112);
+            this.txt_gfx.Location = new System.Drawing.Point(261, 55);
             this.txt_gfx.Name = "txt_gfx";
             this.txt_gfx.Size = new System.Drawing.Size(122, 20);
             this.txt_gfx.TabIndex = 7;
@@ -207,7 +111,7 @@
             // txt_colour_r
             // 
             this.txt_colour_r.Enabled = false;
-            this.txt_colour_r.Location = new System.Drawing.Point(236, 136);
+            this.txt_colour_r.Location = new System.Drawing.Point(261, 79);
             this.txt_colour_r.Name = "txt_colour_r";
             this.txt_colour_r.Size = new System.Drawing.Size(36, 20);
             this.txt_colour_r.TabIndex = 9;
@@ -215,7 +119,7 @@
             // lbl_colour
             // 
             this.lbl_colour.AutoSize = true;
-            this.lbl_colour.Location = new System.Drawing.Point(190, 136);
+            this.lbl_colour.Location = new System.Drawing.Point(215, 79);
             this.lbl_colour.Name = "lbl_colour";
             this.lbl_colour.Size = new System.Drawing.Size(40, 13);
             this.lbl_colour.TabIndex = 8;
@@ -224,7 +128,7 @@
             // txt_colour_g
             // 
             this.txt_colour_g.Enabled = false;
-            this.txt_colour_g.Location = new System.Drawing.Point(278, 136);
+            this.txt_colour_g.Location = new System.Drawing.Point(303, 79);
             this.txt_colour_g.Name = "txt_colour_g";
             this.txt_colour_g.Size = new System.Drawing.Size(37, 20);
             this.txt_colour_g.TabIndex = 10;
@@ -232,7 +136,7 @@
             // txt_colour_b
             // 
             this.txt_colour_b.Enabled = false;
-            this.txt_colour_b.Location = new System.Drawing.Point(321, 136);
+            this.txt_colour_b.Location = new System.Drawing.Point(346, 79);
             this.txt_colour_b.Name = "txt_colour_b";
             this.txt_colour_b.Size = new System.Drawing.Size(37, 20);
             this.txt_colour_b.TabIndex = 11;
@@ -240,7 +144,7 @@
             // txt_tag
             // 
             this.txt_tag.Enabled = false;
-            this.txt_tag.Location = new System.Drawing.Point(236, 86);
+            this.txt_tag.Location = new System.Drawing.Point(261, 29);
             this.txt_tag.Name = "txt_tag";
             this.txt_tag.Size = new System.Drawing.Size(122, 20);
             this.txt_tag.TabIndex = 13;
@@ -248,17 +152,16 @@
             // lbl_tag
             // 
             this.lbl_tag.AutoSize = true;
-            this.lbl_tag.Location = new System.Drawing.Point(201, 89);
+            this.lbl_tag.Location = new System.Drawing.Point(226, 32);
             this.lbl_tag.Name = "lbl_tag";
             this.lbl_tag.Size = new System.Drawing.Size(29, 13);
             this.lbl_tag.TabIndex = 12;
             this.lbl_tag.Text = "Tag:";
-            this.lbl_tag.Click += new System.EventHandler(this.lbl_tag_Click);
             // 
             // lbl_government
             // 
             this.lbl_government.AutoSize = true;
-            this.lbl_government.Location = new System.Drawing.Point(669, 340);
+            this.lbl_government.Location = new System.Drawing.Point(677, 311);
             this.lbl_government.Name = "lbl_government";
             this.lbl_government.Size = new System.Drawing.Size(68, 13);
             this.lbl_government.TabIndex = 18;
@@ -268,7 +171,7 @@
             // 
             this.cmb_government.Enabled = false;
             this.cmb_government.FormattingEnabled = true;
-            this.cmb_government.Location = new System.Drawing.Point(745, 337);
+            this.cmb_government.Location = new System.Drawing.Point(753, 308);
             this.cmb_government.Name = "cmb_government";
             this.cmb_government.Size = new System.Drawing.Size(121, 21);
             this.cmb_government.TabIndex = 19;
@@ -297,7 +200,7 @@
             // 
             this.cmb_technology.Enabled = false;
             this.cmb_technology.FormattingEnabled = true;
-            this.cmb_technology.Location = new System.Drawing.Point(746, 310);
+            this.cmb_technology.Location = new System.Drawing.Point(754, 281);
             this.cmb_technology.Name = "cmb_technology";
             this.cmb_technology.Size = new System.Drawing.Size(121, 21);
             this.cmb_technology.TabIndex = 25;
@@ -305,17 +208,16 @@
             // lbl_technology_group
             // 
             this.lbl_technology_group.AutoSize = true;
-            this.lbl_technology_group.Location = new System.Drawing.Point(640, 314);
+            this.lbl_technology_group.Location = new System.Drawing.Point(648, 285);
             this.lbl_technology_group.Name = "lbl_technology_group";
             this.lbl_technology_group.Size = new System.Drawing.Size(98, 13);
             this.lbl_technology_group.TabIndex = 24;
             this.lbl_technology_group.Text = "Technology Group:";
-            this.lbl_technology_group.Click += new System.EventHandler(this.lbl_technology_group_Click);
             // 
             // txt_capital
             // 
             this.txt_capital.Enabled = false;
-            this.txt_capital.Location = new System.Drawing.Point(745, 364);
+            this.txt_capital.Location = new System.Drawing.Point(753, 335);
             this.txt_capital.Name = "txt_capital";
             this.txt_capital.Size = new System.Drawing.Size(120, 20);
             this.txt_capital.TabIndex = 27;
@@ -323,7 +225,7 @@
             // lbl_capital
             // 
             this.lbl_capital.AutoSize = true;
-            this.lbl_capital.Location = new System.Drawing.Point(695, 368);
+            this.lbl_capital.Location = new System.Drawing.Point(703, 339);
             this.lbl_capital.Name = "lbl_capital";
             this.lbl_capital.Size = new System.Drawing.Size(42, 13);
             this.lbl_capital.TabIndex = 26;
@@ -386,7 +288,7 @@
             // txt_mercantilism
             // 
             this.txt_mercantilism.Enabled = false;
-            this.txt_mercantilism.Location = new System.Drawing.Point(745, 390);
+            this.txt_mercantilism.Location = new System.Drawing.Point(753, 361);
             this.txt_mercantilism.Name = "txt_mercantilism";
             this.txt_mercantilism.Size = new System.Drawing.Size(121, 20);
             this.txt_mercantilism.TabIndex = 35;
@@ -395,7 +297,7 @@
             // 
             this.lbl_mercantilism.AutoSize = true;
             this.lbl_mercantilism.Cursor = System.Windows.Forms.Cursors.UpArrow;
-            this.lbl_mercantilism.Location = new System.Drawing.Point(669, 394);
+            this.lbl_mercantilism.Location = new System.Drawing.Point(677, 365);
             this.lbl_mercantilism.Name = "lbl_mercantilism";
             this.lbl_mercantilism.Size = new System.Drawing.Size(68, 13);
             this.lbl_mercantilism.TabIndex = 34;
@@ -413,7 +315,7 @@
             // bt_edit_nationalidea
             // 
             this.bt_edit_nationalidea.Enabled = false;
-            this.bt_edit_nationalidea.Location = new System.Drawing.Point(892, 103);
+            this.bt_edit_nationalidea.Location = new System.Drawing.Point(900, 74);
             this.bt_edit_nationalidea.Name = "bt_edit_nationalidea";
             this.bt_edit_nationalidea.Size = new System.Drawing.Size(75, 23);
             this.bt_edit_nationalidea.TabIndex = 43;
@@ -424,7 +326,7 @@
             // bt_new_nationalideasgroup
             // 
             this.bt_new_nationalideasgroup.Enabled = false;
-            this.bt_new_nationalideasgroup.Location = new System.Drawing.Point(975, 74);
+            this.bt_new_nationalideasgroup.Location = new System.Drawing.Point(983, 45);
             this.bt_new_nationalideasgroup.Name = "bt_new_nationalideasgroup";
             this.bt_new_nationalideasgroup.Size = new System.Drawing.Size(75, 23);
             this.bt_new_nationalideasgroup.TabIndex = 45;
@@ -462,15 +364,17 @@
             // bt_edit_nationalideasgroup
             // 
             this.bt_edit_nationalideasgroup.Enabled = false;
-            this.bt_edit_nationalideasgroup.Location = new System.Drawing.Point(892, 74);
+            this.bt_edit_nationalideasgroup.Location = new System.Drawing.Point(900, 45);
             this.bt_edit_nationalideasgroup.Name = "bt_edit_nationalideasgroup";
             this.bt_edit_nationalideasgroup.Size = new System.Drawing.Size(75, 23);
             this.bt_edit_nationalideasgroup.TabIndex = 49;
             this.bt_edit_nationalideasgroup.Text = "Edit";
             this.bt_edit_nationalideasgroup.UseVisualStyleBackColor = true;
+            this.bt_edit_nationalideasgroup.Click += new System.EventHandler(this.bt_edit_nationalideasgroup_Click);
             // 
             // lb_units
             // 
+            this.lb_units.Enabled = false;
             this.lb_units.FormattingEnabled = true;
             this.lb_units.Location = new System.Drawing.Point(6, 27);
             this.lb_units.Name = "lb_units";
@@ -479,6 +383,7 @@
             // 
             // cmb_units
             // 
+            this.cmb_units.Enabled = false;
             this.cmb_units.FormattingEnabled = true;
             this.cmb_units.Location = new System.Drawing.Point(6, 336);
             this.cmb_units.Name = "cmb_units";
@@ -487,6 +392,7 @@
             // 
             // bt_add_unit
             // 
+            this.bt_add_unit.Enabled = false;
             this.bt_add_unit.Location = new System.Drawing.Point(130, 334);
             this.bt_add_unit.Name = "bt_add_unit";
             this.bt_add_unit.Size = new System.Drawing.Size(75, 23);
@@ -497,6 +403,7 @@
             // 
             // bt_up
             // 
+            this.bt_up.Enabled = false;
             this.bt_up.Location = new System.Drawing.Point(130, 28);
             this.bt_up.Name = "bt_up";
             this.bt_up.Size = new System.Drawing.Size(75, 23);
@@ -507,6 +414,7 @@
             // 
             // bt_down
             // 
+            this.bt_down.Enabled = false;
             this.bt_down.Location = new System.Drawing.Point(130, 57);
             this.bt_down.Name = "bt_down";
             this.bt_down.Size = new System.Drawing.Size(75, 23);
@@ -517,6 +425,7 @@
             // 
             // bt_delete
             // 
+            this.bt_delete.Enabled = false;
             this.bt_delete.Location = new System.Drawing.Point(130, 86);
             this.bt_delete.Name = "bt_delete";
             this.bt_delete.Size = new System.Drawing.Size(75, 23);
@@ -535,13 +444,12 @@
             this.groupBox1.Controls.Add(this.cmb_idea3);
             this.groupBox1.Controls.Add(this.cmb_idea2);
             this.groupBox1.Controls.Add(this.cmb_idea1);
-            this.groupBox1.Location = new System.Drawing.Point(217, 179);
+            this.groupBox1.Location = new System.Drawing.Point(242, 122);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(160, 245);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Historical Idea Groups";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // cmb_idea8
             // 
@@ -621,7 +529,7 @@
             this.groupBox2.Controls.Add(this.lbl_religion);
             this.groupBox2.Controls.Add(this.cmb_religion);
             this.groupBox2.Controls.Add(this.cmb_religiongroup);
-            this.groupBox2.Location = new System.Drawing.Point(650, 227);
+            this.groupBox2.Location = new System.Drawing.Point(658, 198);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(236, 79);
             this.groupBox2.TabIndex = 60;
@@ -634,7 +542,7 @@
             this.groupBox3.Controls.Add(this.lbl_culturegroup);
             this.groupBox3.Controls.Add(this.cmb_culture);
             this.groupBox3.Controls.Add(this.lbl_culture);
-            this.groupBox3.Location = new System.Drawing.Point(650, 142);
+            this.groupBox3.Location = new System.Drawing.Point(658, 113);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(236, 79);
             this.groupBox3.TabIndex = 61;
@@ -647,13 +555,12 @@
             this.groupBox4.Controls.Add(this.lbl_nationalideagroup);
             this.groupBox4.Controls.Add(this.lbl_nationalideas);
             this.groupBox4.Controls.Add(this.cmb_nationalideasgroup);
-            this.groupBox4.Location = new System.Drawing.Point(650, 56);
+            this.groupBox4.Location = new System.Drawing.Point(658, 27);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(236, 80);
+            this.groupBox4.Size = new System.Drawing.Size(409, 80);
             this.groupBox4.TabIndex = 62;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "National Ideas";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // lbl_national_ideas
             // 
@@ -662,7 +569,6 @@
             this.lbl_national_ideas.Name = "lbl_national_ideas";
             this.lbl_national_ideas.Size = new System.Drawing.Size(0, 13);
             this.lbl_national_ideas.TabIndex = 16;
-            this.lbl_national_ideas.Click += new System.EventHandler(this.lbl_national_ideas_Click);
             // 
             // groupBox5
             // 
@@ -673,21 +579,72 @@
             this.groupBox5.Controls.Add(this.bt_up);
             this.groupBox5.Controls.Add(this.bt_delete);
             this.groupBox5.Controls.Add(this.bt_down);
-            this.groupBox5.Location = new System.Drawing.Point(400, 56);
+            this.groupBox5.Location = new System.Drawing.Point(408, 27);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(220, 368);
             this.groupBox5.TabIndex = 63;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Historical Units";
             // 
+            // cmb_countries
+            // 
+            this.cmb_countries.Enabled = false;
+            this.cmb_countries.FormattingEnabled = true;
+            this.cmb_countries.Location = new System.Drawing.Point(12, 56);
+            this.cmb_countries.Name = "cmb_countries";
+            this.cmb_countries.Size = new System.Drawing.Size(133, 21);
+            this.cmb_countries.TabIndex = 1;
+            // 
+            // bt_load
+            // 
+            this.bt_load.Location = new System.Drawing.Point(12, 27);
+            this.bt_load.Name = "bt_load";
+            this.bt_load.Size = new System.Drawing.Size(93, 23);
+            this.bt_load.TabIndex = 3;
+            this.bt_load.Text = "Load Game";
+            this.bt_load.UseVisualStyleBackColor = true;
+            this.bt_load.Click += new System.EventHandler(this.bt_load_Click);
+            // 
+            // bt_loadc
+            // 
+            this.bt_loadc.Enabled = false;
+            this.bt_loadc.Location = new System.Drawing.Point(12, 83);
+            this.bt_loadc.Name = "bt_loadc";
+            this.bt_loadc.Size = new System.Drawing.Size(93, 23);
+            this.bt_loadc.TabIndex = 4;
+            this.bt_loadc.Text = "Load Country";
+            this.bt_loadc.UseVisualStyleBackColor = true;
+            this.bt_loadc.Click += new System.EventHandler(this.bt_loadc_Click);
+            // 
+            // bt_save
+            // 
+            this.bt_save.Enabled = false;
+            this.bt_save.Location = new System.Drawing.Point(13, 113);
+            this.bt_save.Name = "bt_save";
+            this.bt_save.Size = new System.Drawing.Size(92, 23);
+            this.bt_save.TabIndex = 5;
+            this.bt_save.Text = "Save Country";
+            this.bt_save.UseVisualStyleBackColor = true;
+            this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
+            // 
+            // bt_exit
+            // 
+            this.bt_exit.Location = new System.Drawing.Point(13, 142);
+            this.bt_exit.Name = "bt_exit";
+            this.bt_exit.Size = new System.Drawing.Size(92, 23);
+            this.bt_exit.TabIndex = 64;
+            this.bt_exit.Text = "Exit";
+            this.bt_exit.UseVisualStyleBackColor = true;
+            this.bt_exit.Click += new System.EventHandler(this.bt_exit_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1065, 529);
+            this.ClientSize = new System.Drawing.Size(1085, 443);
+            this.Controls.Add(this.bt_exit);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.lbl_government);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.cmb_government);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -712,15 +669,10 @@
             this.Controls.Add(this.bt_save);
             this.Controls.Add(this.bt_loadc);
             this.Controls.Add(this.bt_load);
-            this.Controls.Add(this.lbl_country);
             this.Controls.Add(this.cmb_countries);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.groupBox4);
             this.Name = "main";
             this.Text = "Clausewitz Country editor (eu4)";
-            this.Load += new System.EventHandler(this.main_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -737,16 +689,6 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ComboBox cmb_countries;
-        private System.Windows.Forms.Label lbl_country;
-        private System.Windows.Forms.Button bt_load;
-        private System.Windows.Forms.Button bt_loadc;
-        private System.Windows.Forms.ToolStripMenuItem saveCountryToolStripMenuItem;
-        private System.Windows.Forms.Button bt_save;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.Label lbl_gfx;
         private System.Windows.Forms.TextBox txt_gfx;
         private System.Windows.Forms.TextBox txt_colour_r;
@@ -798,6 +740,11 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label lbl_national_ideas;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ComboBox cmb_countries;
+        private System.Windows.Forms.Button bt_load;
+        private System.Windows.Forms.Button bt_loadc;
+        private System.Windows.Forms.Button bt_save;
+        private System.Windows.Forms.Button bt_exit;
     }
 }
 

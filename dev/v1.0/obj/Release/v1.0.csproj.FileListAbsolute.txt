@@ -8,3 +8,4 @@ d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Rele
 d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Release\v1.0.exe
 d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Release\v1.0.pdb
 d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Release\v1._0.NationalIdeaEditor.resources
+d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Release\v1._0.NationalIdeaGroupEditor.resources

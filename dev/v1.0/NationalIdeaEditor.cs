@@ -15,11 +15,10 @@ namespace v1._0
     {
         string eulocation;
 
-        void LoadIdea() //loads the actual ideainfo from file
+        void LoadIdea(string[] file) //loads the actual ideainfo from file
         {
             txt_edit.Text = "";
 
-            string[] file = File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt");
             for (int i = 0; i < file.Length; i++)
             {
                 string rawline = file[i];
@@ -57,16 +56,10 @@ namespace v1._0
                                 txt_edit.Text = txt_edit.Text + "\n" + line.Trim('\t');
                                 
                             }
-                            return;
                         }
                     }
-                    MessageBox.Show("Idea not found in group", "Error");
-                    return;
                 }
             }
-            MessageBox.Show("Ideagroup not found", "Error");
-            return;
-
         }
 
         void SaveIdea()
@@ -88,7 +81,15 @@ namespace v1._0
             txt_group.Text = selectedgroup;
             cmb_ideas.Text = selectedidea;
 
-            LoadIdea();
+            LoadIdea(File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt"));
+            if (txt_edit.Text == "")
+            {
+                LoadIdea(File.ReadAllLines(eulocation + "\\common\\ideas\\zz_group_ideas.txt"));
+                if (txt_edit.Text == "")
+                {
+                    LoadIdea(File.ReadAllLines(eulocation + "\\common\\ideas\\zzz_default_idea.txt"));
+                }
+            }
         }
 
 
@@ -99,7 +100,7 @@ namespace v1._0
 
         private void bt_load_Click(object sender, EventArgs e)
         {
-            LoadIdea();
+            LoadIdea(File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt"));
         }
     }
 }

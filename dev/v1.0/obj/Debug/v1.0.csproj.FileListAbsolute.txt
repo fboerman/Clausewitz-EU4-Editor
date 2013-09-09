@@ -21,3 +21,4 @@ D:\Desktop\Clausewitz-EU4-Editor-master\Clausewitz-EU4-Editor-master\dev\v1.0\ob
 D:\Documents\Visual Studio 2012\Projects\CCE niels fork\v1.0\bin\Debug\v1.0.exe.config
 D:\Documents\Visual Studio 2012\Projects\CCE niels fork\v1.0\obj\Debug\v1.0.exe
 D:\Documents\Visual Studio 2012\Projects\CCE niels fork\v1.0\obj\Debug\v1.0.pdb
+d:\documents\visual studio 2012\Projects\Clausewitz Country editor\v1.0\obj\Debug\v1._0.NationalIdeaGroupEditor.resources
