@@ -6,20 +6,42 @@ The editor is written in C# and available under the GPL v2 license. You need the
 
 Currently the editor is in public preview mode. this means that the editor can read the game data and display it in the controls, you can change things and the subeditor for national ideas and ideas group can be used. However you cannot save anything yet and only country editing is available.
 
+Instructions
+------------
+- Click load game and select the game folder
+- Select a country and click load country
+- Adjust properties to something you want (or leave everything default if you want to see if the editor creates proper mod files)
+- Click save country
+- Repeat for other countries
+- Click save mod and give your mod a name and specify a save location
+- all done!
+
 Planning
 --------
 
 Currently available:
 * country reading with all of its variables except for historical names
-* seeing all the possibilites of governments\religions\cultures\techgroups
+* seeing all the possibilites of governments\religions\cultures\techgroups and search through them in group by group.
+* saving the country info to modfiles
 
 In planning: (aka comming soon(c))
-* saving (offcourse, high priority
-* choose wich gamefiles you want to load from basegame and wich from a mod
-* flag info control
-* creating new country wizard (i will try to include localization and flags for this)
-* adding editors for governments, cultures, religions and techgroups (and maybe units)
+* saving and creating new national ideas/ national ideas group.
+* choose wich gamefiles you want to load from basegame and wich from an existing mod.
+* flag info control.
+* creating new country wizard (i will try to include localization and flags for this).
+* adding editors for governments, cultures, religions and techgroups (and maybe units).
+* splitting all the gui logic and the actual editor program in different classes for better readability.
 
+
+Changelog
+---------
+v0.2:
+* saving is now possible for countries. nationalideaseditor is not available in savemode yet
+* added control for prefered religion. this is an optional property and not every country has this one set (wich is why i forgot it in the previous version)
+* multiple bug fixes and code improvements
+
+v0.1:
+* first release, can only read properties from countries and the nationalideas
 Feedback
 --------
 Feedback is very much appriciated. This is a learning project for me and my code is far from optimal. If you have any feedback (this includes bug reports and ideas for the program) then dont hesitate to shoot me an email at williewonka341@gmail.com. Thx in advance for your feedback!

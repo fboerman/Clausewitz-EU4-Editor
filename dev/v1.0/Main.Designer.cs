@@ -75,15 +75,30 @@
             this.cmb_idea2 = new System.Windows.Forms.ComboBox();
             this.cmb_idea1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bt_new_religion = new System.Windows.Forms.Button();
+            this.lbl_preferedreligion = new System.Windows.Forms.Label();
+            this.bt_edit_religiongroup = new System.Windows.Forms.Button();
+            this.bt_new_religiongroup = new System.Windows.Forms.Button();
+            this.cmb_prefered_religion = new System.Windows.Forms.ComboBox();
+            this.bt_edit_religion = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.bt_new_culture = new System.Windows.Forms.Button();
+            this.bt_edit_culturegroup = new System.Windows.Forms.Button();
+            this.bt_new_culturegroup = new System.Windows.Forms.Button();
+            this.bt_edit_culture = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lbl_national_ideas = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cmb_countries = new System.Windows.Forms.ComboBox();
             this.bt_load = new System.Windows.Forms.Button();
             this.bt_loadc = new System.Windows.Forms.Button();
-            this.bt_save = new System.Windows.Forms.Button();
+            this.bt_save_country = new System.Windows.Forms.Button();
             this.bt_exit = new System.Windows.Forms.Button();
+            this.bt_save_mod = new System.Windows.Forms.Button();
+            this.bt_new_techgroup = new System.Windows.Forms.Button();
+            this.bt_edit_techgroup = new System.Windows.Forms.Button();
+            this.bt_new_government = new System.Windows.Forms.Button();
+            this.bt_edit_government = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -161,7 +176,7 @@
             // lbl_government
             // 
             this.lbl_government.AutoSize = true;
-            this.lbl_government.Location = new System.Drawing.Point(677, 311);
+            this.lbl_government.Location = new System.Drawing.Point(678, 343);
             this.lbl_government.Name = "lbl_government";
             this.lbl_government.Size = new System.Drawing.Size(68, 13);
             this.lbl_government.TabIndex = 18;
@@ -171,7 +186,7 @@
             // 
             this.cmb_government.Enabled = false;
             this.cmb_government.FormattingEnabled = true;
-            this.cmb_government.Location = new System.Drawing.Point(753, 308);
+            this.cmb_government.Location = new System.Drawing.Point(754, 340);
             this.cmb_government.Name = "cmb_government";
             this.cmb_government.Size = new System.Drawing.Size(121, 21);
             this.cmb_government.TabIndex = 19;
@@ -200,7 +215,7 @@
             // 
             this.cmb_technology.Enabled = false;
             this.cmb_technology.FormattingEnabled = true;
-            this.cmb_technology.Location = new System.Drawing.Point(754, 281);
+            this.cmb_technology.Location = new System.Drawing.Point(755, 313);
             this.cmb_technology.Name = "cmb_technology";
             this.cmb_technology.Size = new System.Drawing.Size(121, 21);
             this.cmb_technology.TabIndex = 25;
@@ -208,7 +223,7 @@
             // lbl_technology_group
             // 
             this.lbl_technology_group.AutoSize = true;
-            this.lbl_technology_group.Location = new System.Drawing.Point(648, 285);
+            this.lbl_technology_group.Location = new System.Drawing.Point(649, 317);
             this.lbl_technology_group.Name = "lbl_technology_group";
             this.lbl_technology_group.Size = new System.Drawing.Size(98, 13);
             this.lbl_technology_group.TabIndex = 24;
@@ -217,7 +232,7 @@
             // txt_capital
             // 
             this.txt_capital.Enabled = false;
-            this.txt_capital.Location = new System.Drawing.Point(753, 335);
+            this.txt_capital.Location = new System.Drawing.Point(754, 367);
             this.txt_capital.Name = "txt_capital";
             this.txt_capital.Size = new System.Drawing.Size(120, 20);
             this.txt_capital.TabIndex = 27;
@@ -225,7 +240,7 @@
             // lbl_capital
             // 
             this.lbl_capital.AutoSize = true;
-            this.lbl_capital.Location = new System.Drawing.Point(703, 339);
+            this.lbl_capital.Location = new System.Drawing.Point(704, 371);
             this.lbl_capital.Name = "lbl_capital";
             this.lbl_capital.Size = new System.Drawing.Size(42, 13);
             this.lbl_capital.TabIndex = 26;
@@ -261,11 +276,11 @@
             // lbl_religion
             // 
             this.lbl_religion.AutoSize = true;
-            this.lbl_religion.Location = new System.Drawing.Point(43, 49);
+            this.lbl_religion.Location = new System.Drawing.Point(3, 49);
             this.lbl_religion.Name = "lbl_religion";
-            this.lbl_religion.Size = new System.Drawing.Size(48, 13);
+            this.lbl_religion.Size = new System.Drawing.Size(87, 13);
             this.lbl_religion.TabIndex = 32;
-            this.lbl_religion.Text = "Religion:";
+            this.lbl_religion.Text = "Starting Religion:";
             // 
             // cmb_religion
             // 
@@ -288,7 +303,7 @@
             // txt_mercantilism
             // 
             this.txt_mercantilism.Enabled = false;
-            this.txt_mercantilism.Location = new System.Drawing.Point(753, 361);
+            this.txt_mercantilism.Location = new System.Drawing.Point(754, 393);
             this.txt_mercantilism.Name = "txt_mercantilism";
             this.txt_mercantilism.Size = new System.Drawing.Size(121, 20);
             this.txt_mercantilism.TabIndex = 35;
@@ -297,7 +312,7 @@
             // 
             this.lbl_mercantilism.AutoSize = true;
             this.lbl_mercantilism.Cursor = System.Windows.Forms.Cursors.UpArrow;
-            this.lbl_mercantilism.Location = new System.Drawing.Point(677, 365);
+            this.lbl_mercantilism.Location = new System.Drawing.Point(678, 397);
             this.lbl_mercantilism.Name = "lbl_mercantilism";
             this.lbl_mercantilism.Size = new System.Drawing.Size(68, 13);
             this.lbl_mercantilism.TabIndex = 34;
@@ -525,29 +540,137 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.bt_new_religion);
+            this.groupBox2.Controls.Add(this.lbl_preferedreligion);
+            this.groupBox2.Controls.Add(this.bt_edit_religiongroup);
+            this.groupBox2.Controls.Add(this.bt_new_religiongroup);
+            this.groupBox2.Controls.Add(this.cmb_prefered_religion);
+            this.groupBox2.Controls.Add(this.bt_edit_religion);
             this.groupBox2.Controls.Add(this.lbl_religiongroup);
             this.groupBox2.Controls.Add(this.lbl_religion);
             this.groupBox2.Controls.Add(this.cmb_religion);
             this.groupBox2.Controls.Add(this.cmb_religiongroup);
             this.groupBox2.Location = new System.Drawing.Point(658, 198);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(236, 79);
+            this.groupBox2.Size = new System.Drawing.Size(409, 109);
             this.groupBox2.TabIndex = 60;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Religion";
             // 
+            // bt_new_religion
+            // 
+            this.bt_new_religion.Enabled = false;
+            this.bt_new_religion.Location = new System.Drawing.Point(325, 46);
+            this.bt_new_religion.Name = "bt_new_religion";
+            this.bt_new_religion.Size = new System.Drawing.Size(75, 23);
+            this.bt_new_religion.TabIndex = 72;
+            this.bt_new_religion.Text = "New";
+            this.bt_new_religion.UseVisualStyleBackColor = true;
+            // 
+            // lbl_preferedreligion
+            // 
+            this.lbl_preferedreligion.AutoSize = true;
+            this.lbl_preferedreligion.Location = new System.Drawing.Point(-3, 76);
+            this.lbl_preferedreligion.Name = "lbl_preferedreligion";
+            this.lbl_preferedreligion.Size = new System.Drawing.Size(94, 13);
+            this.lbl_preferedreligion.TabIndex = 35;
+            this.lbl_preferedreligion.Text = "Preferred Religion:";
+            // 
+            // bt_edit_religiongroup
+            // 
+            this.bt_edit_religiongroup.Enabled = false;
+            this.bt_edit_religiongroup.Location = new System.Drawing.Point(242, 17);
+            this.bt_edit_religiongroup.Name = "bt_edit_religiongroup";
+            this.bt_edit_religiongroup.Size = new System.Drawing.Size(75, 23);
+            this.bt_edit_religiongroup.TabIndex = 71;
+            this.bt_edit_religiongroup.Text = "Edit";
+            this.bt_edit_religiongroup.UseVisualStyleBackColor = true;
+            // 
+            // bt_new_religiongroup
+            // 
+            this.bt_new_religiongroup.Enabled = false;
+            this.bt_new_religiongroup.Location = new System.Drawing.Point(325, 17);
+            this.bt_new_religiongroup.Name = "bt_new_religiongroup";
+            this.bt_new_religiongroup.Size = new System.Drawing.Size(75, 23);
+            this.bt_new_religiongroup.TabIndex = 70;
+            this.bt_new_religiongroup.Text = "New";
+            this.bt_new_religiongroup.UseVisualStyleBackColor = true;
+            // 
+            // cmb_prefered_religion
+            // 
+            this.cmb_prefered_religion.Enabled = false;
+            this.cmb_prefered_religion.FormattingEnabled = true;
+            this.cmb_prefered_religion.Location = new System.Drawing.Point(97, 73);
+            this.cmb_prefered_religion.Name = "cmb_prefered_religion";
+            this.cmb_prefered_religion.Size = new System.Drawing.Size(121, 21);
+            this.cmb_prefered_religion.TabIndex = 34;
+            // 
+            // bt_edit_religion
+            // 
+            this.bt_edit_religion.Enabled = false;
+            this.bt_edit_religion.Location = new System.Drawing.Point(242, 46);
+            this.bt_edit_religion.Name = "bt_edit_religion";
+            this.bt_edit_religion.Size = new System.Drawing.Size(75, 23);
+            this.bt_edit_religion.TabIndex = 69;
+            this.bt_edit_religion.Text = "Edit";
+            this.bt_edit_religion.UseVisualStyleBackColor = true;
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.bt_new_culture);
+            this.groupBox3.Controls.Add(this.bt_edit_culturegroup);
             this.groupBox3.Controls.Add(this.cmb_culturegroup);
+            this.groupBox3.Controls.Add(this.bt_new_culturegroup);
+            this.groupBox3.Controls.Add(this.bt_edit_culture);
             this.groupBox3.Controls.Add(this.lbl_culturegroup);
             this.groupBox3.Controls.Add(this.cmb_culture);
             this.groupBox3.Controls.Add(this.lbl_culture);
             this.groupBox3.Location = new System.Drawing.Point(658, 113);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(236, 79);
+            this.groupBox3.Size = new System.Drawing.Size(409, 79);
             this.groupBox3.TabIndex = 61;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Primary Culture";
+            // 
+            // bt_new_culture
+            // 
+            this.bt_new_culture.Enabled = false;
+            this.bt_new_culture.Location = new System.Drawing.Point(325, 46);
+            this.bt_new_culture.Name = "bt_new_culture";
+            this.bt_new_culture.Size = new System.Drawing.Size(75, 23);
+            this.bt_new_culture.TabIndex = 68;
+            this.bt_new_culture.Text = "New";
+            this.bt_new_culture.UseVisualStyleBackColor = true;
+            // 
+            // bt_edit_culturegroup
+            // 
+            this.bt_edit_culturegroup.Enabled = false;
+            this.bt_edit_culturegroup.Location = new System.Drawing.Point(242, 17);
+            this.bt_edit_culturegroup.Name = "bt_edit_culturegroup";
+            this.bt_edit_culturegroup.Size = new System.Drawing.Size(75, 23);
+            this.bt_edit_culturegroup.TabIndex = 67;
+            this.bt_edit_culturegroup.Text = "Edit";
+            this.bt_edit_culturegroup.UseVisualStyleBackColor = true;
+            // 
+            // bt_new_culturegroup
+            // 
+            this.bt_new_culturegroup.Enabled = false;
+            this.bt_new_culturegroup.Location = new System.Drawing.Point(325, 17);
+            this.bt_new_culturegroup.Name = "bt_new_culturegroup";
+            this.bt_new_culturegroup.Size = new System.Drawing.Size(75, 23);
+            this.bt_new_culturegroup.TabIndex = 66;
+            this.bt_new_culturegroup.Text = "New";
+            this.bt_new_culturegroup.UseVisualStyleBackColor = true;
+            // 
+            // bt_edit_culture
+            // 
+            this.bt_edit_culture.Enabled = false;
+            this.bt_edit_culture.Location = new System.Drawing.Point(242, 46);
+            this.bt_edit_culture.Name = "bt_edit_culture";
+            this.bt_edit_culture.Size = new System.Drawing.Size(75, 23);
+            this.bt_edit_culture.TabIndex = 65;
+            this.bt_edit_culture.Text = "Edit";
+            this.bt_edit_culture.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -616,20 +739,20 @@
             this.bt_loadc.UseVisualStyleBackColor = true;
             this.bt_loadc.Click += new System.EventHandler(this.bt_loadc_Click);
             // 
-            // bt_save
+            // bt_save_country
             // 
-            this.bt_save.Enabled = false;
-            this.bt_save.Location = new System.Drawing.Point(13, 113);
-            this.bt_save.Name = "bt_save";
-            this.bt_save.Size = new System.Drawing.Size(92, 23);
-            this.bt_save.TabIndex = 5;
-            this.bt_save.Text = "Save Country";
-            this.bt_save.UseVisualStyleBackColor = true;
-            this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
+            this.bt_save_country.Enabled = false;
+            this.bt_save_country.Location = new System.Drawing.Point(13, 113);
+            this.bt_save_country.Name = "bt_save_country";
+            this.bt_save_country.Size = new System.Drawing.Size(92, 23);
+            this.bt_save_country.TabIndex = 5;
+            this.bt_save_country.Text = "Save Country";
+            this.bt_save_country.UseVisualStyleBackColor = true;
+            this.bt_save_country.Click += new System.EventHandler(this.bt_save_country_Click);
             // 
             // bt_exit
             // 
-            this.bt_exit.Location = new System.Drawing.Point(13, 142);
+            this.bt_exit.Location = new System.Drawing.Point(12, 171);
             this.bt_exit.Name = "bt_exit";
             this.bt_exit.Size = new System.Drawing.Size(92, 23);
             this.bt_exit.TabIndex = 64;
@@ -637,11 +760,66 @@
             this.bt_exit.UseVisualStyleBackColor = true;
             this.bt_exit.Click += new System.EventHandler(this.bt_exit_Click);
             // 
+            // bt_save_mod
+            // 
+            this.bt_save_mod.Location = new System.Drawing.Point(12, 142);
+            this.bt_save_mod.Name = "bt_save_mod";
+            this.bt_save_mod.Size = new System.Drawing.Size(93, 23);
+            this.bt_save_mod.TabIndex = 65;
+            this.bt_save_mod.Text = "Save Mod";
+            this.bt_save_mod.UseVisualStyleBackColor = true;
+            this.bt_save_mod.Click += new System.EventHandler(this.bt_save_mod_Click);
+            // 
+            // bt_new_techgroup
+            // 
+            this.bt_new_techgroup.Enabled = false;
+            this.bt_new_techgroup.Location = new System.Drawing.Point(983, 311);
+            this.bt_new_techgroup.Name = "bt_new_techgroup";
+            this.bt_new_techgroup.Size = new System.Drawing.Size(75, 23);
+            this.bt_new_techgroup.TabIndex = 74;
+            this.bt_new_techgroup.Text = "New";
+            this.bt_new_techgroup.UseVisualStyleBackColor = true;
+            // 
+            // bt_edit_techgroup
+            // 
+            this.bt_edit_techgroup.Enabled = false;
+            this.bt_edit_techgroup.Location = new System.Drawing.Point(900, 311);
+            this.bt_edit_techgroup.Name = "bt_edit_techgroup";
+            this.bt_edit_techgroup.Size = new System.Drawing.Size(75, 23);
+            this.bt_edit_techgroup.TabIndex = 73;
+            this.bt_edit_techgroup.Text = "Edit";
+            this.bt_edit_techgroup.UseVisualStyleBackColor = true;
+            // 
+            // bt_new_government
+            // 
+            this.bt_new_government.Enabled = false;
+            this.bt_new_government.Location = new System.Drawing.Point(983, 338);
+            this.bt_new_government.Name = "bt_new_government";
+            this.bt_new_government.Size = new System.Drawing.Size(75, 23);
+            this.bt_new_government.TabIndex = 76;
+            this.bt_new_government.Text = "New";
+            this.bt_new_government.UseVisualStyleBackColor = true;
+            // 
+            // bt_edit_government
+            // 
+            this.bt_edit_government.Enabled = false;
+            this.bt_edit_government.Location = new System.Drawing.Point(900, 338);
+            this.bt_edit_government.Name = "bt_edit_government";
+            this.bt_edit_government.Size = new System.Drawing.Size(75, 23);
+            this.bt_edit_government.TabIndex = 75;
+            this.bt_edit_government.Text = "Edit";
+            this.bt_edit_government.UseVisualStyleBackColor = true;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 443);
+            this.ClientSize = new System.Drawing.Size(1085, 480);
+            this.Controls.Add(this.bt_new_government);
+            this.Controls.Add(this.bt_edit_government);
+            this.Controls.Add(this.bt_new_techgroup);
+            this.Controls.Add(this.bt_edit_techgroup);
+            this.Controls.Add(this.bt_save_mod);
             this.Controls.Add(this.bt_exit);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.lbl_government);
@@ -666,7 +844,7 @@
             this.Controls.Add(this.lbl_colour);
             this.Controls.Add(this.txt_gfx);
             this.Controls.Add(this.lbl_gfx);
-            this.Controls.Add(this.bt_save);
+            this.Controls.Add(this.bt_save_country);
             this.Controls.Add(this.bt_loadc);
             this.Controls.Add(this.bt_load);
             this.Controls.Add(this.cmb_countries);
@@ -743,8 +921,23 @@
         private System.Windows.Forms.ComboBox cmb_countries;
         private System.Windows.Forms.Button bt_load;
         private System.Windows.Forms.Button bt_loadc;
-        private System.Windows.Forms.Button bt_save;
+        private System.Windows.Forms.Button bt_save_country;
         private System.Windows.Forms.Button bt_exit;
+        private System.Windows.Forms.Label lbl_preferedreligion;
+        private System.Windows.Forms.ComboBox cmb_prefered_religion;
+        private System.Windows.Forms.Button bt_new_religion;
+        private System.Windows.Forms.Button bt_edit_religiongroup;
+        private System.Windows.Forms.Button bt_new_religiongroup;
+        private System.Windows.Forms.Button bt_edit_religion;
+        private System.Windows.Forms.Button bt_new_culture;
+        private System.Windows.Forms.Button bt_edit_culturegroup;
+        private System.Windows.Forms.Button bt_new_culturegroup;
+        private System.Windows.Forms.Button bt_edit_culture;
+        private System.Windows.Forms.Button bt_save_mod;
+        private System.Windows.Forms.Button bt_new_techgroup;
+        private System.Windows.Forms.Button bt_edit_techgroup;
+        private System.Windows.Forms.Button bt_new_government;
+        private System.Windows.Forms.Button bt_edit_government;
     }
 }
 

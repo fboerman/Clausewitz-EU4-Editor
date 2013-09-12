@@ -63,6 +63,7 @@
             // 
             // bt_save
             // 
+            this.bt_save.Enabled = false;
             this.bt_save.Location = new System.Drawing.Point(346, 38);
             this.bt_save.Name = "bt_save";
             this.bt_save.Size = new System.Drawing.Size(75, 23);
