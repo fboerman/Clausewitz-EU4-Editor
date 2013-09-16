@@ -762,6 +762,7 @@
             // 
             // bt_save_mod
             // 
+            this.bt_save_mod.Enabled = false;
             this.bt_save_mod.Location = new System.Drawing.Point(12, 142);
             this.bt_save_mod.Name = "bt_save_mod";
             this.bt_save_mod.Size = new System.Drawing.Size(93, 23);

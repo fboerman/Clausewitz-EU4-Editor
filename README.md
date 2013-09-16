@@ -4,7 +4,7 @@ Clausewitz-EU4-Editor
 This is a mod editor for the grand strategy game Europa Universalis 4 made by Paradox Interactive. This editor will first focus on country editing but later on editing for ideas, cultures and religions will be added.
 The editor is written in C# and available under the GPL v2 license. You need the .net framework 4.5 in order to run it.
 
-Currently the editor is in public preview mode. this means that the editor can read the game data and display it in the controls, you can change things and the subeditor for national ideas and ideas group can be used. However you cannot save anything yet and only country editing is available.
+Current version is 0.3. you can read, edit and save all country properties. the national ideas editor cant save yet but does display the idea properties.
 
 Instructions
 ------------
@@ -35,6 +35,11 @@ In planning: (aka comming soon(c))
 
 Changelog
 ---------
+
+v0.3:
+* bugfix: now correctly removes all old tag references in the ideafile
+* you now get a nice popup when saving is done
+
 v0.2:
 * saving is now possible for countries. nationalideaseditor is not available in savemode yet
 * added control for prefered religion. this is an optional property and not every country has this one set (wich is why i forgot it in the previous version)
@@ -42,6 +47,7 @@ v0.2:
 
 v0.1:
 * first release, can only read properties from countries and the nationalideas
+
 Feedback
 --------
 Feedback is very much appriciated. This is a learning project for me and my code is far from optimal. If you have any feedback (this includes bug reports and ideas for the program) then dont hesitate to shoot me an email at williewonka341@gmail.com. Thx in advance for your feedback!

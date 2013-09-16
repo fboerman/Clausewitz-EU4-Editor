@@ -1036,10 +1036,19 @@ namespace v1._0
                 //first check if its a country idea group or group idea or default idea
                 if (country.Nationalideagroup.Split('_')[0].Length == 3 && country.Nationalideagroup != "default_ideas") //3 letter tag in front of the name so its a specific country idea
                 {
+                    //load old file and create new one
                     string filelocation = savelocation + "\\" + modname.Trim() + "\\common\\ideas\\00_country_ideas.txt";
                     original = File.ReadAllLines(filelocation, Encoding.Default);
                     File.Delete(filelocation);
                     writer = new StreamWriter(new FileStream(filelocation, FileMode.Append, FileAccess.Write), Encoding.Default);
+                    //first delete all the old tag references
+                    DeleteCountryTag(country, original, writer);
+                    writer.Close();
+                    //then reload the file
+                    original = File.ReadAllLines(filelocation, Encoding.Default);
+                    File.Delete(filelocation);
+                    writer = new StreamWriter(new FileStream(filelocation, FileMode.Append, FileAccess.Write), Encoding.Default);
+                    //and begin editing for adding the country
                     bool found = false;
                     i = 0;
                     for (; i < original.Length; i++)
@@ -1120,9 +1129,18 @@ namespace v1._0
                     if (country.Nationalideagroup != "default_ideas") //not default and not country specific so its in the group file
                     {
                         string filelocation = savelocation + "\\" + modname.Trim() + "\\common\\ideas\\zz_group_ideas.txt";
+                        //load old file and create new one
                         original = File.ReadAllLines(filelocation, Encoding.Default);
                         File.Delete(filelocation);
                         writer = new StreamWriter(new FileStream(filelocation, FileMode.Append, FileAccess.Write), Encoding.Default);
+                        //first delete all the old tag references
+                        DeleteCountryTag(country, original, writer);
+                        writer.Close();
+                        //then reload the file
+                        original = File.ReadAllLines(filelocation, Encoding.Default);
+                        File.Delete(filelocation);
+                        writer = new StreamWriter(new FileStream(filelocation, FileMode.Append, FileAccess.Write), Encoding.Default);
+                        //and begin editing for adding the country
                         bool found = false;
                         i = 0;
                         for (; i < original.Length; i++)
@@ -1198,22 +1216,27 @@ namespace v1._0
                     else
                     {
                         //if its default ideas then delete all the instances of the tag in other files, however a country will can still fall under a zz_group_ideas.txt entry, i will not change this because those ideas are always better then default_ideas
-                        //first the 00_country_ideas.txt file
                         original = File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt", Encoding.Default);
                         writer = new StreamWriter(new FileStream(savelocation + "\\" + modname.Trim() + "\\common\\ideas\\00_country_ideas.txt", FileMode.Append, FileAccess.Write), Encoding.Default);
-                        foreach (string line in original)
-                        {
-                            if (!line.Contains("tag = " + country.Tag))
-                            {
-                                writer.WriteLine(line);
-                            }
-                        }
+                        DeleteCountryTag(country, original, writer);
                         writer.Close();
 
                     }
                 }
             }
             
+        }
+
+        void DeleteCountryTag(CountryData country, string[] original, StreamWriter writer) //deletes the country tag from given file
+        {
+            foreach (string rawline in original)
+            {
+                string line = SplitComments(rawline)[0];
+                if (!line.Contains("tag = " + country.Tag))
+                {
+                    writer.WriteLine(rawline);
+                }
+            }
         }
 
         string[] SplitComments(string rawline) //splits the line from the comment, returns the line on 0 and the comment on 1
@@ -1283,6 +1306,7 @@ namespace v1._0
                 bt_loadc.Enabled = true;
                 bt_save_country.Enabled = true;
                 cmb_countries.Enabled = true;
+                bt_save_mod.Enabled = true;
             }
             catch
             {
@@ -1515,6 +1539,8 @@ namespace v1._0
                 {
                     SaveCountry(country, savelocation, modname);
                 }
+                //report back that it is done:
+                MessageBox.Show("Mod " + modname + " is succesfull saved to: " + savelocation);
             }
         }
     }
