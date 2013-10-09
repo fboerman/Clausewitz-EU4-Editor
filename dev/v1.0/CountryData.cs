@@ -24,12 +24,12 @@ namespace v1._0
         public int Capital;
         public decimal Mercantilism;
 
-        public CountryData()
-        { 
-            
-        }
+        //extra properties wich are normally in the controls
+        public string Culturegroup;
+        public string Religiongroup;
+        public string Capitalregion;
 
-        void test(CountryData country)
+        public CountryData()
         { 
             
         }

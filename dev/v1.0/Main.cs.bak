@@ -15,31 +15,16 @@ namespace v1._0
     
     public partial class main : Form
     {
-        //some globals
         string eulocation; //the location of the game
-        //lists of organized gamedata for the controls
         List<List<string>> Religions = new List<List<string>>();
         List<List<string>> Cultures = new List<List<string>>();
         List<List<string>> NIdeas = new List<List<string>>();
         List<string> Ideas = new List<string>();
-        //list for the saved countries
         List<CountryData> savedcountries = new List<CountryData>();
-        //important files, these are saved in a string array in order for the sub editers to change stuff wich the main editor can read and write
-        List<string> NIdeasFile1;//00_country_ideas.txt
-        List<string> NIdeasFile2;//zz_group_ideas.txt
-        List<string> NIdeasFile3;//zzz_default_idea.txt
-        List<string> CulturesFile;
-        List<string> ReligionsFile;
-        List<string> GovernmentFile;
-        List<string> TechgroupFile;
-        List<string> BIdeasFile;
-        List<string> Regions;
 
-        SyntaxOptions options = new SyntaxOptions();
-
-        int ReadSyntax(int linenum, List<string> file) //used to read from curly bracket to curly bracket, returns the line number of the closing bracket, if end of file then returns 0
+        int ReadSyntax(int linenum, string[] file) //used to read from curly bracket to curly bracket, returns the line number of the closing bracket, if end of file then returns 0
         {
-            for (; linenum < file.Count; linenum++)
+            for (; linenum < file.Length; linenum++)
             {
                 string line = file[linenum];
                 if (line.Contains('}') && !line.Contains('{'))
@@ -62,34 +47,205 @@ namespace v1._0
         {
             //load the government types
 
-            LoadCombobox(cmb_government, LoadSyntaxFirstLevel(GovernmentFile));
+            LoadCombobox(cmb_government, LoadSyntaxFirstLevel(File.ReadAllLines(eulocation + "\\common\\governments\\00_governments.txt")));
+            //string[] file = File.ReadAllLines(eulocation + "\\common\\governments\\00_governments.txt");
+            //for (int i = 0; i < file.Length; i++)
+            //{
+            //    string line = file[i];
+            //    if (!line.Contains('#')) //not a comment line
+            //    {
+            //        if (line.Contains('{'))
+            //        {
+            //            string[] parts = line.Split(' ');
+            //            cmb_government.Items.Add(parts[0]);
+            //            i = ReadSyntax(i + 1, file);
+            //            if (i == 0)
+            //            {
+            //                MessageBox.Show("Invalid syntax in government file", "error");
+            //                return;
+            //            }
+            //        }
+            //    }
+            //}
 
             //load the religions
 
             //first read the religion groups
 
-            LoadCombobox(cmb_religiongroup, LoadSyntaxFirstLevel(ReligionsFile));
-            LoadCombobox(cmb_prefered_religion, LoadSyntaxFirstLevel(ReligionsFile));
+            LoadCombobox(cmb_religiongroup, LoadSyntaxFirstLevel(File.ReadAllLines(eulocation + "\\common\\religions\\00_religion.txt")));
+            LoadCombobox(cmb_prefered_religion, LoadSyntaxFirstLevel(File.ReadAllLines(eulocation + "\\common\\religions\\00_religion.txt")));
+
+            //string []file = File.ReadAllLines(eulocation + "\\common\\religions\\00_religion.txt");
+            //for (int i = 0; i < file.Length; i++)
+            //{
+            //    string line = file[i];
+            //    if (!line.Contains('#')) //not a comment line and not a religiongroup
+            //    {
+            //        if (line.Contains('{'))
+            //        {
+            //            string[] parts = line.Split(' ');
+            //            cmb_religiongroup.Items.Add(parts[0]);
+            //            List<string> group = new List<string>();
+            //            Religions.Add(group);
+            //            i = ReadSyntax(i + 1, file);
+            //            if (i == 0)
+            //            {
+            //                MessageBox.Show("Invalid syntax in religion file", "error");
+            //                return;
+            //            }
+            //        }
+            //    }
+            //}
 
             //now that we know the religiongroups, we can read the religions themselves.
 
-            Religions = LoadSyntaxSecondLevel(ReligionsFile);
+            Religions = LoadSyntaxSecondLevel(File.ReadAllLines(eulocation + "\\common\\religions\\00_religion.txt"));
+
+            //int j = 0;
+            //for (int i = 0; i < file.Length; i++)
+            //{
+            //    string line = file[i];
+            //    if (!line.Contains('#')) //not a comment line and not a religiongroup
+            //    {
+
+            //        foreach (string group in cmb_religiongroup.Items) //go through all the religiongroups
+            //        {
+            //            if (line.Contains(group))//check if the current line is the start of a new religiongroup, then read the codeblock of this group
+            //            {
+            //                for (int z = i; z < file.Length; z++)
+            //                {
+            //                    line = file[z];
+            //                    if (line.Contains('{') && line.Contains('\t'))
+            //                    {
+            //                        string[] parts = line.Split(' ');
+            //                        string religion = parts[0].TrimStart('\t');
+            //                        Religions[j].Add(religion);
+            //                        cmb_prefered_religion.Items.Add(religion);
+            //                        z = ReadSyntax(z + 1, file);
+            //                        if (z == 0)
+            //                        {
+            //                            MessageBox.Show("Invalid syntax in religion file", "error");
+            //                            return;
+            //                        }
+            //                    }
+            //                    else
+            //                    {
+            //                        if (line.Contains('}') && !line.Contains('\t'))
+            //                        {
+            //                            i = z;
+            //                            break;
+            //                        }
+            //                    }
+            //                }
+            //                j++;
+            //                break;
+            //            }
+            //        }
+
+            //    }
+            //}
 
             //now load the culture groups
+            
+            LoadCombobox(cmb_culturegroup, LoadSyntaxFirstLevel(File.ReadAllLines(eulocation + "\\common\\cultures\\00_cultures.txt")));
 
-            LoadCombobox(cmb_culturegroup, LoadSyntaxFirstLevel(CulturesFile));
+            //file = File.ReadAllLines(eulocation + "\\common\\cultures\\00_cultures.txt");
+            //for (int i = 0; i < file.Length; i++)
+            //{
+            //    string line = file[i];
+            //    if (!line.Contains('#')) //not a comment line and not a religiongroup
+            //    {
+            //        if (line.Contains('{'))
+            //        {
+            //            string[] parts = line.Split(' ');
+            //            string culturegroup = parts[0].TrimEnd('=').TrimEnd('\t');
+            //            cmb_culturegroup.Items.Add(culturegroup);
+            //            List<string> group = new List<string>();
+            //            Cultures.Add(group);
+            //            i = ReadSyntax(i + 1, file);
+            //            if (i == 0)
+            //            {
+            //                MessageBox.Show("Invalid syntax in culture file", "error");
+            //                return;
+            //            }
+            //        }
+            //    }
+            //}
 
             //load the  cultures into their groups
 
-            Cultures = LoadSyntaxSecondLevel(CulturesFile);
+            Cultures = LoadSyntaxSecondLevel(File.ReadAllLines(eulocation + "\\common\\cultures\\00_cultures.txt"));
+
+            //j = 0;
+            //for (int i = 0; i < file.Length; i++)
+            //{
+            //    string line = file[i];
+            //    if (!line.Contains('#')) //not a comment line and not a religiongroup
+            //    {
+
+            //        foreach (string group in cmb_culturegroup.Items) //go through all the religiongroups
+            //        {
+            //            if (line.Contains(group))//check if the current line is the start of a new religiongroup, then read the codeblock of this group
+            //            {
+            //                for (int z = i + 1; z < file.Length; z++)
+            //                {
+            //                    line = file[z];
+            //                    if (line.Contains('{') && line.Contains('\t') && !line.Contains("dynasty_names"))
+            //                    {
+            //                        string[] parts = line.Split(' ');
+            //                        string culture = parts[0].TrimStart('\t').TrimEnd('\t');
+            //                        Cultures[j].Add(culture);
+            //                        z = ReadSyntax(z + 1, file);
+            //                        if (z == 0)
+            //                        {
+            //                            MessageBox.Show("Invalid syntax in cultures file", "error");
+            //                            return;
+            //                        }
+            //                    }
+            //                    else
+            //                    {
+            //                        if (line.Contains('}') && !line.Contains('\t'))
+            //                        {
+            //                            i = z;
+            //                            break;
+            //                        }
+            //                    }
+            //                }
+            //                j++;
+            //                break;
+            //            }
+            //        }
+
+            //    }
+            //}
 
             //load the technology groups
 
-            LoadCombobox(cmb_technology, LoadSyntaxSecondLevel(TechgroupFile)[0]);
+            LoadCombobox(cmb_technology, LoadSyntaxSecondLevel(File.ReadAllLines(eulocation + "\\common\\technology.txt"))[0]);
+
+            //file = File.ReadAllLines(eulocation + "\\common\\technology.txt");
+            //for (int i = 0; i < file.Length; i++)
+            //{
+            //    string line = file[i];
+            //    if (!line.Contains('#')) //not a comment line
+            //    {
+            //        if (line.Contains('{') && line.Contains('\t'))
+            //        {
+            //            string[] parts = line.Split(' ');
+            //            cmb_technology.Items.Add(parts[0].TrimStart('\t'));
+            //            i = ReadSyntax(i + 1, file);
+            //            if (i == 0)
+            //            {
+            //                MessageBox.Show("Invalid syntax in technology file", "Error");
+            //                return;
+            //            }
+            //        }
+            //    }
+            //}
 
             //load the basic ideagroups
 
-            List<string> ideas = LoadSyntaxFirstLevel(BIdeasFile);
+            List<string> ideas = LoadSyntaxFirstLevel(File.ReadAllLines(eulocation + "\\common\\ideas\\00_basic_ideas.txt"));
             LoadCombobox(cmb_idea1, ideas);
             LoadCombobox(cmb_idea2, ideas);
             LoadCombobox(cmb_idea3, ideas);
@@ -98,17 +254,101 @@ namespace v1._0
             LoadCombobox(cmb_idea6, ideas);
             LoadCombobox(cmb_idea7, ideas);
             LoadCombobox(cmb_idea8, ideas);
-            LoadCombobox(cmb_idea9, ideas);
-            LoadCombobox(cmb_Bidea, ideas);
+
+            //file = File.ReadAllLines(eulocation + "\\common\\ideas\\00_basic_ideas.txt");
+            //for (int i = 0; i < file.Length; i++)
+            //{
+            //    string line = file[i];
+            //    string[] parts = line.Split('#');
+            //    if (parts[0] == "")
+            //    {
+            //        continue;
+            //    }
+            //    line = parts[0];
+            //    if (line.Contains('{') && !line.Contains('\t'))
+            //    {
+            //        parts = line.Split(' ');
+            //        string idea = parts[0].TrimStart('\t');
+            //        Ideas.Add(idea);
+            //        cmb_idea1.Items.Add(idea);
+            //        cmb_idea2.Items.Add(idea);
+            //        cmb_idea3.Items.Add(idea);
+            //        cmb_idea4.Items.Add(idea);
+            //        cmb_idea5.Items.Add(idea);
+            //        cmb_idea6.Items.Add(idea);
+            //        cmb_idea7.Items.Add(idea);
+            //        cmb_idea8.Items.Add(idea);
+
+            //        i = ReadSyntax(i + 1, file);
+            //        if (i == 0)
+            //        {
+            //            MessageBox.Show("Invalid syntax in basic ideas file", "Error");
+            //            return;
+            //        }
+            //    }
+            //}
 
             //load the national idea groups
-            LoadCombobox(cmb_nationalideasgroup, LoadSyntaxFirstLevel(NIdeasFile1).Concat(LoadSyntaxFirstLevel(NIdeasFile2)).ToList());
+            LoadCombobox(cmb_nationalideasgroup, LoadSyntaxFirstLevel(File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt")).Concat(LoadSyntaxFirstLevel(File.ReadAllLines(eulocation + "\\common\\ideas\\zz_group_ideas.txt"))).ToList());
             //add an entry for the default group
             cmb_nationalideasgroup.Items.Add("default_idea");
 
             //load the ideas themselves into the global list
+            //List<List<string>> country_ideas = LoadSyntaxSecondLevel(File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt"));
+            //List<List<string>> group_ideas = LoadSyntaxSecondLevel(File.ReadAllLines(eulocation + "\\common\\ideas\\zz_group_ideas.txt"));
+            //NIdeas = country_ideas.Concat(group_ideas).ToList();
 
-            NIdeas = LoadSyntaxSecondLevel(NIdeasFile1).Concat((LoadSyntaxSecondLevel(NIdeasFile2)).Concat(LoadSyntaxSecondLevel(NIdeasFile3)).ToList()).ToList();
+            NIdeas = LoadSyntaxSecondLevel(File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt")).Concat(LoadSyntaxSecondLevel(File.ReadAllLines(eulocation + "\\common\\ideas\\zz_group_ideas.txt"))).Concat(LoadSyntaxSecondLevel(File.ReadAllLines(eulocation + "\\common\\ideas\\zzz_default_idea.txt"))).ToList();
+
+            //first the individual national ideas
+            //file = File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt");
+            //for (int i = 0; i < file.Length; i++)
+            //{
+            //    string line = file[i];
+            //    string[] parts = line.Split('#');
+            //    if (parts[0] == "")
+            //    {
+            //        continue;
+            //    }
+            //    line = parts[0];
+            //    if (line.Contains('{') && !line.Contains('\t'))
+            //    {
+            //        parts = line.Split(' ');
+            //        string idea = parts[0].TrimStart('\t');
+            //        cmb_nationalideasgroup.Items.Add(idea);
+            //        i = ReadSyntax(i + 1, file);
+            //        if (i == 0)
+            //        {
+            //            MessageBox.Show("Invalid syntax in national ideas file", "Error");
+            //            return;
+            //        }
+            //    }
+            //}
+
+            //second the idea groups that are generic for for example an entire continent or parts of a culturegroup
+            //file = File.ReadAllLines(eulocation + "\\common\\ideas\\zz_group_ideas.txt");
+            //for (int i = 0; i < file.Length; i++)
+            //{
+            //    string line = file[i];
+            //    string[] parts = line.Split('#');
+            //    if (parts[0] == "")
+            //    {
+            //        continue;
+            //    }
+            //    line = parts[0];
+            //    if (line.Contains('{') && !line.Contains('\t'))
+            //    {
+            //        parts = line.Split(' ');
+            //        string idea = parts[0].TrimStart('\t');
+            //        cmb_nationalideasgroup.Items.Add(idea);
+            //        i = ReadSyntax(i + 1, file);
+            //        if (i == 0)
+            //        {
+            //            MessageBox.Show("Invalid syntax in national ideas file", "Error");
+            //            return;
+            //        }
+            //    }
+            //}
 
             //load the unittypes
             string[] folder = Directory.GetFiles(eulocation + "\\common\\units\\");
@@ -135,16 +375,6 @@ namespace v1._0
                     string country = Path.GetFileNameWithoutExtension(file);
                     cmb_countries.Items.Add(country);
                 }
-                //load the files into memory
-                NIdeasFile1 = File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt", Encoding.Default).ToList();
-                NIdeasFile2 = File.ReadAllLines(eulocation + "\\common\\ideas\\zz_group_ideas.txt", Encoding.Default).ToList();
-                NIdeasFile3 = File.ReadAllLines(eulocation + "\\common\\ideas\\zzz_default_idea.txt", Encoding.Default).ToList();
-                CulturesFile = File.ReadAllLines(eulocation + "\\common\\cultures\\00_cultures.txt", Encoding.Default).ToList();
-                ReligionsFile = File.ReadAllLines(eulocation + "\\common\\religions\\00_religion.txt", Encoding.Default).ToList();
-                GovernmentFile = File.ReadAllLines(eulocation + "\\common\\governments\\00_governments.txt", Encoding.Default).ToList();
-                TechgroupFile = File.ReadAllLines(eulocation + "\\common\\technology.txt", Encoding.Default).ToList();
-                BIdeasFile = File.ReadAllLines(eulocation + "\\common\\ideas\\00_basic_ideas.txt", Encoding.Default).ToList();
-                Regions = File.ReadAllLines(eulocation + "\\map\\region.txt", Encoding.Default).ToList();
                 //other options
                 LoadCountryOptions();
             }
@@ -162,10 +392,32 @@ namespace v1._0
             txt_tag.Text = country.Tag;
             txt_gfx.Text = country.Gfx;
             cmb_nationalideasgroup.Text = country.Nationalideagroup;
-
-            cmb_religiongroup.Text = country.Religiongroup;
+            
+            for (int i = 0; i < Cultures.Count; i++)
+            {
+                if (Cultures[i].Contains(country.Culture))
+                {
+                    cmb_culturegroup.SelectedIndex = i;
+                    break;
+                }
+            }
+            if (cmb_culturegroup.Text == "")
+            {
+                MessageBox.Show("Invalid culture", "Syntax Error");
+            }
             cmb_culture.Text = country.Culture;
-            cmb_culturegroup.Text = country.Culturegroup;
+            for (int i = 0; i < Religions.Count; i++)
+            {
+                if (Religions[i].Contains(country.Religion))
+                {
+                    cmb_religiongroup.SelectedIndex = i;
+                    break;
+                }
+            }
+            if (cmb_culturegroup.Text == "")
+            {
+                MessageBox.Show("Invalid religion", "Syntax Error");
+            }
             cmb_religion.Text = country.Religion;
             cmb_prefered_religion.Text = country.PreferedReligion;
             cmb_technology.Text = country.Techgroup;
@@ -180,7 +432,6 @@ namespace v1._0
             cmb_idea6.Text = country.Ideas[5];
             cmb_idea7.Text = country.Ideas[6];
             cmb_idea8.Text = country.Ideas[7];
-            cmb_idea9.Text = country.Ideas[8];
             txt_colour_r.Text = country.Color[0].ToString();
             txt_colour_g.Text = country.Color[1].ToString();
             txt_colour_b.Text = country.Color[2].ToString();
@@ -202,7 +453,7 @@ namespace v1._0
             country.Color = colours;
             country.Gfx = txt_gfx.Text;
             country.Units = lb_units.Items.OfType<string>().ToList();
-            country.Ideas = new string[9] { cmb_idea1.Text, cmb_idea2.Text, cmb_idea3.Text, cmb_idea4.Text, cmb_idea5.Text, cmb_idea6.Text, cmb_idea7.Text, cmb_idea8.Text, cmb_idea9.Text };
+            country.Ideas = new string[8] { cmb_idea1.Text, cmb_idea2.Text, cmb_idea3.Text, cmb_idea4.Text, cmb_idea5.Text, cmb_idea6.Text, cmb_idea7.Text, cmb_idea8.Text };
             country.Nationalideagroup = cmb_nationalideasgroup.Text;
             country.Culture = cmb_culture.Text;
             country.Religion = cmb_religion.Text;
@@ -211,8 +462,6 @@ namespace v1._0
             country.Capital = Convert.ToInt32(txt_capital.Text);
             country.Mercantilism = decimal.Parse(txt_mercantilism.Text, CultureInfo.InvariantCulture);
             country.Government = cmb_government.Text;
-            country.Culturegroup = cmb_culturegroup.Text;
-            country.Religiongroup = cmb_religiongroup.Text;
 
             return country;
         }
@@ -220,10 +469,13 @@ namespace v1._0
         CountryData LoadCountry(string countryname)//loads the details of the given country and gives back a country data
         {
             CountryData country = null;
-            country = savedcountries.Find(item => item.Name == cmb_countries.Text);
-            if (country != null)
+            try
             {
-                return country;
+                country = savedcountries.Find(item => item.Name == cmb_countries.Text);
+            }
+            catch
+            { 
+                //country is not yet in the list so read from file
             }
 
             if (country != null) //if country has been found in savedcountries list then load the country from this list
@@ -234,37 +486,27 @@ namespace v1._0
             {
                 //create the datatype in wich the information will be loaded in
                 country = new CountryData();
-                country.Ideas = new string[9];
+                country.Ideas = new string[8];
                 //load the tag
-                string[] file = File.ReadAllLines(eulocation + "\\common\\country_tags\\00_countries.txt", Encoding.Default);
+                string[] file = File.ReadAllLines(eulocation + "\\common\\country_tags\\00_countries.txt");
                 foreach (string rawline in file)
                 {
-                    string line = SplitComments(rawline)[0];
+                    string line = rawline.Split('#')[0];
                     if (line == "")
                     {
                         continue;
                     }
-                    //extract the country name (just line.contains is not enough because of dubble names eg munster and IRE_munster
-                    string[] parts = line.Split('/');
-                    string selectedcountry = "";
-                    foreach (string part in parts)
-                    { 
-                        if(part.Contains(".txt"))
-                        {
-                            selectedcountry = part.Split('.')[0];
-                            break;
-                        }
-                    }
-
-                    if (selectedcountry == countryname)
+                    if (line.Contains(countryname))
                     {
-                        if (line.Contains('\t')) //sometimes there is a tab and sometimes there is a space to format the line so we need to distuigish this. (wtf paradox?!)
+                        if (line.Contains('\t'))
                         {
-                            country.Tag = line.Split('\t')[0];
+                            string[] parts = line.Split('\t');
+                            country.Tag = parts[0];
                         }
                         else
                         {
-                            country.Tag = line.Split(' ')[0];
+                            string[] parts = line.Split(' ');
+                            country.Tag = parts[0];
                         }
 
                         break;
@@ -272,7 +514,7 @@ namespace v1._0
                 }
 
                 //read the info from the history/countries/<tag> - <name>.txt file
-                //because paradox in all their wisdom choose to not use spaces in the common/countries folder for names but do use it in the history folder (seriously guys wtf?!), we need to load all the filenames from the history file and find the right one using the tag
+                //because paradox in all their wisdom choose to not use spaces in the common/countries folder for names but do use it in the history folder, we need to load all the filenames from the history file and find the right one using the tag
                 string[] dir = Directory.GetFiles(eulocation + "\\history\\countries\\");
                 string filename = null;
                 foreach (string countryfile in dir)
@@ -396,27 +638,6 @@ namespace v1._0
                         country.PreferedReligion = line.Split('=')[1].Trim();
                     }
                 }
-                //the culture and religion groups can be related from already loaded data
-
-                for (int i = 0; i < Cultures.Count; i++)
-                {
-                    if (Cultures[i].Contains(country.Culture))
-                    {
-                        country.Culturegroup = cmb_culturegroup.Items[i].ToString();
-                        break;
-                    }
-                }
-
-                for (int i = 0; i < Religions.Count; i++)
-                {
-                    if (Religions[i].Contains(country.Religion))
-                    {
-                        country.Religiongroup = cmb_religiongroup.Items[i].ToString();
-                        break;
-                    }
-                }
-                //the capitalregion
-                country.Capitalregion = FindRegion(country.Capital);
 
                 //read the national ideas, this only loads the names of the ideas, the ideas themselves will be loaded and editted in the edit screen
                 string ideatag = SearchNationalIdeas(country.Tag);
@@ -425,7 +646,7 @@ namespace v1._0
                     country.Nationalideagroup = ideatag;
                 }
                 else
-                {                                   
+                {
                     ideatag = SearchNationalGroup(country);
                     if (ideatag != "")
                     {
@@ -441,374 +662,10 @@ namespace v1._0
             return country;
         }
 
-        string FindRegion(int province) //finds the name of the region the given province is in returns an empty string if the region is not found.
-        {
-            
-            for (int i = 0; i < Regions.Count(); i++)
-            {
-                string region = "";
-                string line = SplitComments(Regions[i])[0];
-                if (line == "")
-                {
-                    continue;
-                }
-                if (line.Contains("{"))
-                {
-                    region = line.Split('=')[0].Trim();
-                    for (; i < Regions.Count(); i++)
-                    {
-                        line = SplitComments(Regions[i])[0];
-                        if (line == "")
-                        {
-                            continue;
-                        }
-                        if (line.Contains("}"))
-                        {
-                            break;
-                        }
-                        if(line.Contains(province.ToString()))
-                        {
-                            return region;
-                        }
-                    }
-                }
-            }
-            return "";
-        }
-
-        bool Logic(string type, CountryData country, List<string> file, int i, bool internal_block) //returns true if the logic is true and false when logic is false or an error occured
-        {
-            for (; i < file.Count(); i++)
-            {
-                string line = SplitComments(file[i])[0].Trim('\t').Trim();
-                if (line == "")
-                {
-                    continue;
-                }
-                if ((line.Contains("OR") || line.Contains("AND") || line.Contains("NOT")) && line.Contains("{") && !internal_block)
-                {
-                    bool iblock = false;
-                    if(!(line.Contains('{') && line.Contains('}')))
-                    {
-                        i++;
-                    }
-                    if (line.Contains('{') && line.Contains('}'))
-                    {
-                        iblock = true;
-                    }
-                    if (Logic(line.Trim('\t').Split('=')[0].Trim().ToLower(), country, file, i,iblock))
-                    {
-                        switch (type)
-                        {
-                            case "or":
-                                return true;
-                            case "and":
-                                //do nothing
-                                break;
-                            case "not":
-                                return false;
-                            default:
-                                return false;
-                        }
-                    }
-                    else
-                    {
-                        switch (type)
-                        {
-                            case "or":
-                                //do nothing
-                                break;
-                            case "and":
-                                return false;
-                            case "not":
-                                //do nothing
-                                break;
-                            default:
-                                return false;
-                        }
-                    }
-                    if (!(line.Contains('{') && line.Contains('}')))
-                    {
-                        i = ReadSyntax(i + 1, file);
-                    }                    
-                    continue;
-                }
-                if (line.Contains("trigger"))
-                {
-                    continue;
-                }
-                if (line.Contains('}') && !internal_block)
-                {
-                    break;
-                }
-                string property;
-                string value;
-                if (internal_block) //check if its a one line block
-                {
-                    property = line.Split('=')[1].Trim().Trim('{').Trim();
-                    value = line.Split('=')[2].Trim().Trim('}').Trim();
-                }
-                else
-                {
-                    property = line.Split('=')[0].Trim();
-                    value = line.Split('=')[1].Trim();
-                }
-                switch (property)
-                { 
-                    case "tag":
-                        if (country.Tag == value)
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    return true;
-                                case "and":
-                                    //do nothing
-                                    break;
-                                case "not":
-                                    return false;
-                                default:
-                                    return false;
-                            }
-                        }
-                        else
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    //do nothing
-                                    break;
-                                case "and":
-                                    return false;
-                                case "not":
-                                    //do nothing
-                                    break;
-                                default:
-                                    return false;
-                            }
-                        }
-                        break;
-                    case "primary_culture":
-                        if (country.Culture == value)
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    return true;
-                                case "and":
-                                    //do nothing
-                                    break;
-                                case "not":
-                                    return false;
-                                default:
-                                    return false;
-                            }
-                        }
-                        else
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    //do nothing
-                                    break;
-                                case "and":
-                                    return false;
-                                case "not":
-                                    //do nothing
-                                    break;
-                                default:
-                                    return false;
-                            }
-                        }
-                        break;
-                    case "culture_group":
-                        if (country.Culturegroup == value)
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    return true;
-                                case "and":
-                                    //do nothing
-                                    break;
-                                case "not":
-                                    return false;
-                                default:
-                                    return false;
-                            }
-                        }
-                        else
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    //do nothing
-                                    break;
-                                case "and":
-                                    return false;
-                                case "not":
-                                    //do nothing
-                                    break;
-                                default:
-                                    return false;
-                            }
-                        }
-                        break;
-                    case "religion":
-                        if (country.Religion == value)
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    return true;
-                                case "and":
-                                    //do nothing
-                                    break;
-                                case "not":
-                                    return false;
-                                default:
-                                    return false;
-                            }
-                        }
-                        else
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    //do nothing
-                                    break;
-                                case "and":
-                                    return false;
-                                case "not":
-                                    //do nothing
-                                    break;
-                                default:
-                                    return false;
-                            }
-                        }
-                        break;
-                    case "religion_group":
-                        if (country.Religiongroup == value)
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    return true;
-                                case "and":
-                                    //do nothing
-                                    break;
-                                case "not":
-                                    return false;
-                                default:
-                                    return false;
-                            }
-                        }
-                        else
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    //do nothing
-                                    break;
-                                case "and":
-                                    return false;
-                                case "not":
-                                    //do nothing
-                                    break;
-                                default:
-                                    return false;
-                            }
-                        }
-                        break;
-                    case "government":
-                        if ((country.Government == value) || ((country.Government == "theocratic_government") && (value == "theocracy")))
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    return true;
-                                case "and":
-                                    //do nothing
-                                    break;
-                                case "not":
-                                    return false;
-                                default:
-                                    return false;
-                            }
-                        }
-                        else
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    //do nothing
-                                    break;
-                                case "and":
-                                    return false;
-                                case "not":
-                                    //do nothing
-                                    break;
-                                default:
-                                    return false;
-                            }
-                        }
-                        break;
-                    case "region":
-                        if (country.Capitalregion == value)
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    return true;
-                                case "and":
-                                    //do nothing
-                                    break;
-                                case "not":
-                                    return false;
-                                default:
-                                    return false;
-                            }
-                        }
-                        else
-                        {
-                            switch (type)
-                            {
-                                case "or":
-                                    //do nothing
-                                    break;
-                                case "and":
-                                    return false;
-                                case "not":
-                                    //do nothing
-                                    break;
-                                default:
-                                    return false;
-                            }
-                        }
-                        break;
-                }
-                if (line.Contains('{') && line.Contains('}'))
-                {
-                    break;
-                }
-            }
-            switch (type)
-            {
-                case "or":
-                    return false;
-                case "and":
-                    return true;
-                case "not":
-                    return true;
-                default:
-                    return false;
-            }
-        }
-
         string SearchNationalGroup(CountryData country) //searches for the ideagroup from the zz_group_ideas.txt, returns the name of the group if found
         {
-            List<string> file = NIdeasFile2;
-            for (int i = 0; i < file.Count; i++)
+            string[] file = File.ReadAllLines(eulocation + "\\common\\ideas\\zz_group_ideas.txt");
+            for (int i = 0; i < file.Length; i++)
             {
                 string[] parts = file[i].Split('#');
                 if (parts[0] == "")
@@ -820,12 +677,130 @@ namespace v1._0
                 {
                     string ideatag = line.Split(' ')[0];
 
-                    for (int z = i; z < file.Count; z++)
+                    for (int z = i; z < file.Length; z++)
                     {
                         line = file[z].TrimEnd('\t');
                         if (line.Contains("trigger") && line.Contains('\t'))
                         {
-                            if (Logic("and", country, file, z+1, false))
+                            List<string> OR = new List<string>();
+                            string government = "";
+                            string culture_group = "";
+                            string religion_group = "";
+                            string tag = "";
+
+                            for (int j = z + 1; j < file.Length; j++)
+                            {
+                                line = file[j];
+                                if (line.Contains('='))
+                                {
+                                    string keyword = line.Trim('\t').Split('=')[0].Trim();
+                                    string value = line.Trim('\t').Split('=')[1].Trim();
+
+                                    switch (keyword)
+                                    {
+                                        case "OR":
+                                            for (int q = j + 1; q < file.Length; q++)
+                                            {
+                                                line = file[q];
+                                                if (line.Contains('='))
+                                                {
+                                                    keyword = line.Trim('\t').Split('=')[0].Trim();
+                                                    value = line.Trim('\t').Split('=')[1].Trim();
+                                                    switch (keyword)
+                                                    {
+                                                        case "government":
+                                                            OR.Add("government:" + value);
+                                                            break;
+                                                        case "religion_group":
+                                                            OR.Add("religion_group:" + value);
+                                                            break;
+                                                        case "culture_group":
+                                                            OR.Add("culture_group:" + value);
+                                                            break;
+                                                        case "tag":
+                                                            OR.Add("tag:" + value);
+                                                            break;
+                                                    }
+                                                }
+                                                if (line.Contains('}'))
+                                                {
+                                                    line = "";
+                                                    j = q;
+                                                    break;
+                                                }
+                                            }
+                                            break;
+                                        case "government":
+                                            government = value;
+                                            break;
+                                        case "religion_group":
+                                            religion_group = value;
+                                            break;
+                                        case "culture_group":
+                                            culture_group = value;
+                                            break;
+                                        case "tag":
+                                            tag = value;
+                                            break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (line.Contains('}'))
+                                    {
+                                        z = j;
+                                        break;
+                                    }
+                                }
+                            }
+                            //after parsing all the info in trigger check if the conditions are true.
+                            //first check with the OR list
+                            foreach (string requirement in OR)
+                            {
+                                string keyword = requirement.Split(':')[0];
+                                string value = requirement.Split(':')[1];
+                                switch (keyword)
+                                {
+                                    case "government":
+                                        if (country.Government == value)
+                                        {
+                                            if ((religion_group == "" || religion_group == country.Religion) && (culture_group == "" || culture_group == country.Culture) && (tag == "" || tag == country.Tag))
+                                            {
+                                                return ideatag;
+                                            }
+                                        }
+                                        break;
+                                    case "religion_group":
+                                        if (country.Religion == value)
+                                        {
+                                            if ((government == "" || government == country.Government || (government == "theocracy" && country.Government == "theocratic_government")) && (culture_group == "" || culture_group == country.Culture) && (tag == "" || tag == country.Tag))
+                                            {
+                                                return ideatag;
+                                            }
+                                        }
+                                        break;
+                                    case "culture_group":
+                                        if (country.Culture == value)
+                                        {
+                                            if ((government == "" || government == country.Government || (government == "theocracy" && country.Government == "theocratic_government")) && (religion_group == "" || religion_group == country.Religion) && (tag == "" || tag == country.Tag))
+                                            {
+                                                return ideatag;
+                                            }
+                                        }
+                                        break;
+                                    case "tag":
+                                        if (country.Tag == value)
+                                        {
+                                            if ((government == "" || government == country.Government || (government == "theocracy" && country.Government == "theocratic_government")) && (religion_group == "" || religion_group == country.Religion) && (culture_group == "" || culture_group == country.Culture))
+                                            {
+                                                return ideatag;
+                                            }
+                                        }
+                                        break;
+                                }
+                            }
+                            //if there is no OR block then check the individual requirements
+                            if ((government == "" || government == country.Government || (government == "theocracy" && country.Government == "theocratic_government")) && (religion_group == "" || religion_group == country.Religion) && (culture_group == "" || culture_group == country.Culture) && (tag == "" || txt_tag.Text == tag) && OR.Count == 0)
                             {
                                 return ideatag;
                             }
@@ -847,8 +822,8 @@ namespace v1._0
 
         string SearchNationalIdeas(string tag) //searches the tag of an ideagroup of the selected country, returns that tag if found and empty string otherwise
         {
-            List<string> file = NIdeasFile1;
-            for (int i = 0; i < file.Count; i++)
+            string[] file = File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt");
+            for (int i = 0; i < file.Length; i++)
             {
                 string[] parts = file[i].Split('#');
                 if (parts[0] == "")
@@ -860,12 +835,12 @@ namespace v1._0
                 {
                     string ideatag = line.Split(' ')[0];
 
-                    for (int z = i; z < file.Count; z++)
+                    for (int z = i; z < file.Length; z++)
                     {
                         line = file[z];
                         if (line.Contains("tag") && line.Contains('\t'))
                         {
-                            if (line.Split('=')[1].Trim() == tag)
+                            if (line.Trim('\t').Split('=')[1].Trim() == tag)
                             {
                                 return ideatag;
                             }
@@ -880,17 +855,17 @@ namespace v1._0
                             }
                         }
                     }
-                    
+                    break;
                 }
             }
             return "";
         }
 
-        List<string> LoadSyntaxFirstLevel(List<string> file) //parse the items in the first level of code blocks, returns null on syntax error
+        List<string> LoadSyntaxFirstLevel(string[] file) //parse the items in the first level of code blocks, returns null on syntax error
         {
             List<string> items = new List<string>();
 
-            for (int i = 0; i < file.Count; i++)
+            for (int i = 0; i < file.Length; i++)
             {
                 string line = SplitComments(file[i])[0];
                 string comment = SplitComments(file[i])[1];
@@ -914,18 +889,18 @@ namespace v1._0
             return items;
         }
 
-        List<List<string>> LoadSyntaxSecondLevel(List<string> file) //parse the items in the second level of code blocks. this will return of list of lists that contains the second level item. the order of the list is the same as the file. returns null on syntax error
+        List<List<string>> LoadSyntaxSecondLevel(string[] file) //parse the items in the second level of code blocks. this will return of list of lists that contains the second level item. the order of the list is the same as the file. returns null on syntax error
         {
             List<List<string>> items = new List<List<string>>();
 
-            for (int i = 0; i < file.Count; i++)
+            for (int i = 0; i < file.Length; i++)
             {
                 string line = SplitComments(file[i])[0];
                 if (line.Contains('{'))
                 {
                     List<string> blockitems = new List<string>();
                     i++;
-                    for (; i < file.Count; i++)
+                    for (; i < file.Length; i++)
                     {
                         line = SplitComments(file[i])[0];
                         if (line.Contains("}") && !line.TrimEnd('\t').Contains("\t"))
@@ -955,11 +930,11 @@ namespace v1._0
             return items;
         }
 
-        List<string> LoadSyntaxSecondLevel(List<string> file, string name) //this will load the second level items of a block with specified name, returns null on syntax error
+        List<string> LoadSyntaxSecondLevel(string[] file, string name) //this will load the second level items of a block with specified name, returns null on syntax error
         {
             List<string> items = new List<string>();
 
-            for (int i = 0; i < file.Count; i++)
+            for (int i = 0; i < file.Length; i++)
             {
                 string line = SplitComments(file[i])[0];
                 string comment = SplitComments(file[i])[1];
@@ -971,7 +946,7 @@ namespace v1._0
 
                 if (line.Contains(name) && line.Contains('{'))
                 {
-                    for (int z = i; z < file.Count; z++)
+                    for (int z = i; z < file.Length; z++)
                     {
                         line = file[z];
                         if (line.Contains('{') && line.Contains('\t'))
@@ -1004,39 +979,6 @@ namespace v1._0
             }
 
             return items;
-        }
-
-        List<string> ExtractFirstLevelBlock(List<string> file, string blockname) //extracts the codeblock of a given name, returns null when not found
-        {
-            List<string> Block = new List<string>();
-
-            for (int i = 0; i < file.Count; i++)
-            {
-                string line = SplitComments(file[i])[0];
-
-                if (line.Contains(blockname) && line.Contains("{") && !line.Contains("\t"))
-                {
-                    for (int j = i + 1; j < file.Count; j++)
-                    {
-                        line = SplitComments(file[j])[0];
-
-                        if (line == "")
-                        {
-                            continue;
-                        }
-
-                        if (line.Contains("}") && !line.TrimEnd('\t').Contains("\t"))
-                        {
-                            break;
-                        }
-
-                        Block.Add(line.Remove(0,1));
-                    }
-                    return Block;
-                }
-            }
-
-            return null;
         }
 
         void LoadCombobox(ComboBox cmb, List<string> items) //loads a list into combobox items
@@ -1134,8 +1076,8 @@ namespace v1._0
                 writer = new StreamWriter(new FileStream(savelocation + "\\" + modname.Trim() + "\\common\\countries\\" + country.Name + ".txt", FileMode.Append, FileAccess.Write), Encoding.Default);
                 for (i = 0; i < original.Length; i++)
                 {
-                    string comment = SplitComments(original[i])[1];
-                    string line = SplitComments(original[i])[0];
+                    string comment = SplitComments(original[i])[0];
+                    string line = SplitComments(original[i])[1];
 
                     //if its a empty line then just copy that over
                     if (original[i].Trim(' ', '\t') == "")
@@ -1171,12 +1113,9 @@ namespace v1._0
                         writer.WriteLine("historical_idea_groups = {" + comment);
                         foreach (string idea in country.Ideas)
                         {
-                            if (idea != "")
-                            {
-                                writer.WriteLine("\t" + idea);                                
-                            }
+                            writer.WriteLine("\t" + idea);
                         }
-                        i = ReadSyntax(i + 1, original.ToList());                      
+                        i = i + 10;
                     }
 
                     if (line.Contains("historical_units"))
@@ -1205,10 +1144,11 @@ namespace v1._0
                 {
                     //load old file and create new one
                     string filelocation = savelocation + "\\" + modname.Trim() + "\\common\\ideas\\00_country_ideas.txt";
+                    original = File.ReadAllLines(filelocation, Encoding.Default);
                     File.Delete(filelocation);
                     writer = new StreamWriter(new FileStream(filelocation, FileMode.Append, FileAccess.Write), Encoding.Default);
                     //first delete all the old tag references
-                    DeleteCountryTag(country, NIdeasFile1, writer);
+                    DeleteCountryTag(country, original, writer);
                     writer.Close();
                     //then reload the file
                     original = File.ReadAllLines(filelocation, Encoding.Default);
@@ -1296,10 +1236,11 @@ namespace v1._0
                     {
                         string filelocation = savelocation + "\\" + modname.Trim() + "\\common\\ideas\\zz_group_ideas.txt";
                         //load old file and create new one
+                        original = File.ReadAllLines(filelocation, Encoding.Default);
                         File.Delete(filelocation);
                         writer = new StreamWriter(new FileStream(filelocation, FileMode.Append, FileAccess.Write), Encoding.Default);
                         //first delete all the old tag references
-                        DeleteCountryTag(country, NIdeasFile2, writer);
+                        DeleteCountryTag(country, original, writer);
                         writer.Close();
                         //then reload the file
                         original = File.ReadAllLines(filelocation, Encoding.Default);
@@ -1381,8 +1322,9 @@ namespace v1._0
                     else
                     {
                         //if its default ideas then delete all the instances of the tag in other files, however a country will can still fall under a zz_group_ideas.txt entry, i will not change this because those ideas are always better then default_ideas
+                        original = File.ReadAllLines(eulocation + "\\common\\ideas\\00_country_ideas.txt", Encoding.Default);
                         writer = new StreamWriter(new FileStream(savelocation + "\\" + modname.Trim() + "\\common\\ideas\\00_country_ideas.txt", FileMode.Append, FileAccess.Write), Encoding.Default);
-                        DeleteCountryTag(country, NIdeasFile1, writer);
+                        DeleteCountryTag(country, original, writer);
                         writer.Close();
 
                     }
@@ -1391,7 +1333,7 @@ namespace v1._0
             
         }
 
-        void DeleteCountryTag(CountryData country, List<string> original, StreamWriter writer) //deletes the country tag from given file
+        void DeleteCountryTag(CountryData country, string[] original, StreamWriter writer) //deletes the country tag from given file
         {
             foreach (string rawline in original)
             {
@@ -1427,9 +1369,14 @@ namespace v1._0
             txt_colour_g.Enabled = !txt_colour_g.Enabled;
             txt_colour_r.Enabled = !txt_colour_r.Enabled;
             txt_gfx.Enabled = !txt_gfx.Enabled;
+            cmb_culturegroup.Enabled = !cmb_culturegroup.Enabled;
             cmb_culture.Enabled = !cmb_culture.Enabled;
+            cmb_religiongroup.Enabled = !cmb_religiongroup.Enabled;
             cmb_religion.Enabled = !cmb_religion.Enabled;
+            cmb_technology.Enabled = !cmb_technology.Enabled;
+            cmb_government.Enabled = !cmb_government.Enabled;
             txt_mercantilism.Enabled = !txt_mercantilism.Enabled;
+            cmb_nationalideasgroup.Enabled = !cmb_nationalideasgroup.Enabled;
             cmb_nationalideas.Enabled = !cmb_nationalideas.Enabled;
             cmb_idea1.Enabled = !cmb_idea1.Enabled;
             cmb_idea2.Enabled = !cmb_idea2.Enabled;
@@ -1439,7 +1386,9 @@ namespace v1._0
             cmb_idea6.Enabled = !cmb_idea6.Enabled;
             cmb_idea7.Enabled = !cmb_idea7.Enabled;
             cmb_idea8.Enabled = !cmb_idea8.Enabled;
-            cmb_idea9.Enabled = !cmb_idea9.Enabled;
+            bt_new_nationalideasgroup.Enabled = !bt_new_nationalideasgroup.Enabled;
+            bt_edit_nationalideasgroup.Enabled = !bt_edit_nationalideasgroup.Enabled;
+            bt_edit_nationalidea.Enabled = !bt_edit_nationalidea.Enabled;
             lb_units.Enabled = !lb_units.Enabled;
             cmb_units.Enabled = !cmb_units.Enabled;
             bt_up.Enabled = !bt_up.Enabled;
@@ -1449,33 +1398,6 @@ namespace v1._0
             cmb_prefered_religion.Enabled = !cmb_prefered_religion.Enabled;
         }
 
-        List<string> InsertBlock(List<string> originalfile, List<string> block, string blockname)//inserts a block into a file at the right place, returns the resulting file
-        {
-            List<string> file = new List<string>();
-
-            for (int i = 0; i < originalfile.Count(); i++)
-            {
-                string line = SplitComments(originalfile[i])[0];
-
-                if (line.Contains(blockname))
-                {
-                    file.Add(originalfile[i]);                    
-                    for (int z = 0; z < block.Count(); z++)
-                    {
-                        file.Add("\t" + block[z]);
-                    }
-                    i = ReadSyntax(i + 1, originalfile);
-                    file.Add("}");
-                }
-                else
-                {
-                    file.Add(originalfile[i]);
-                }
-            }
-
-            return file;
-        }
-
         public main()
         {
             InitializeComponent();
@@ -1483,31 +1405,19 @@ namespace v1._0
 
         private void bt_load_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 LoadGame();
                 bt_load.Enabled = false;
                 bt_loadc.Enabled = true;
                 bt_save_country.Enabled = true;
                 cmb_countries.Enabled = true;
                 bt_save_mod.Enabled = true;
-                bt_edit_culturegroup.Enabled = true;
-                bt_edit_governments.Enabled = true;
-                bt_edit_idea.Enabled = true;
-                bt_edit_nationalideasgroup.Enabled = true;
-                bt_edit_religiongroup.Enabled = true;
-                bt_edit_techgroup.Enabled = true;
-                cmb_culturegroup.Enabled = true;
-                cmb_government.Enabled = true;
-                cmb_Bidea.Enabled = true;
-                cmb_nationalideasgroup.Enabled = true;
-                cmb_religiongroup.Enabled = true;
-                cmb_technology.Enabled = true;
-            }
-            catch
-            {
-                MessageBox.Show("Gamefiles not found in this directory.", "Error");
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Gamefiles not found in this directory.", "Error");
+            //}
         }
 
         private void bt_save_country_Click(object sender, EventArgs e)
@@ -1524,11 +1434,6 @@ namespace v1._0
 
         private void bt_loadc_Click(object sender, EventArgs e)
         {
-            if (cmb_countries.Text == "")
-            {
-                MessageBox.Show("Select a country first", "Error");
-                return;
-            }
             lb_units.Items.Clear();
             try
             {
@@ -1564,7 +1469,7 @@ namespace v1._0
         private void cmb_culturegroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmb_culture.Items.Clear();
-            //cmb_culture.Text = "";
+            cmb_culture.Text = "";
             LoadCombobox(cmb_culture,Cultures[cmb_culturegroup.SelectedIndex]);
         //    List<string> cultures = Cultures[cmb_culturegroup.SelectedIndex];
         //    foreach (string culture in cultures)
@@ -1641,8 +1546,8 @@ namespace v1._0
                     ideas.Add(idea);
                 }
 
-                //NationalIdeaEditor form = new NationalIdeaEditor(ideas, cmb_nationalideasgroup.Text, cmb_nationalideas.Text, eulocation);
-                //form.ShowDialog();
+                NationalIdeaEditor form = new NationalIdeaEditor(ideas, cmb_nationalideasgroup.Text, cmb_nationalideas.Text, eulocation);
+                form.ShowDialog();
             }
             else
             {
@@ -1652,53 +1557,13 @@ namespace v1._0
 
         private void bt_edit_nationalideasgroup_Click(object sender, EventArgs e)
         {
-            if (cmb_nationalideasgroup.Text != "")
+            List<string> groups = new List<string>();
+            foreach (string group in cmb_nationalideasgroup.Items)
             {
-                List<string> file;
-                int filenumber;
-                //first find out in wich file the ideagroup is in
-                if (cmb_nationalideasgroup.Text.Split('_')[0].Length == 3) //country ideas
-                {
-                    filenumber = 1;
-                    file = NIdeasFile1;
-                }
-                else
-                {
-                    if (cmb_nationalideasgroup.Text == "default_ideas")//default ideas
-                    {
-                        filenumber = 3;
-                        file = NIdeasFile3;
-                    }
-                    else //group ideas
-                    {
-                        filenumber = 2;
-                        file = NIdeasFile2;
-                    }
-                }
-
-                SubEditor editor = new SubEditor("National Ideas", cmb_nationalideasgroup.Text, "Propertie", "Propertie", ExtractFirstLevelBlock(file, cmb_nationalideasgroup.Text), new string[] { "start", "bonus", "trigger", "free" }, options.modifiers);
-                editor.ShowDialog();
-                switch (filenumber)
-                { 
-                    case 1:
-                        NIdeasFile1 = InsertBlock(NIdeasFile1, editor.Result, cmb_nationalideasgroup.Text);
-                        break;
-
-                    case 2:
-                        NIdeasFile2 = InsertBlock(NIdeasFile2, editor.Result, cmb_nationalideasgroup.Text);
-                        break;
-
-                    case 3:
-                        NIdeasFile3 = InsertBlock(NIdeasFile3, editor.Result, cmb_nationalideasgroup.Text);
-                        break;
-                }
-                editor.Dispose();
+                groups.Add(group);
             }
-            else
-            {
-                MessageBox.Show("Please choose a national idea group first", "Error");
-            }
-
+            NationalIdeaGroupEditor form = new NationalIdeaGroupEditor(groups, cmb_nationalideasgroup.Text, eulocation);
+            form.ShowDialog();
         }
 
         private void bt_exit_Click(object sender, EventArgs e)
@@ -1727,23 +1592,27 @@ namespace v1._0
                 File.WriteAllLines(savelocation + "\\" + modname.Trim() + ".mod", file);
                 //create the modfolder
                 Directory.CreateDirectory(savelocation + "\\" + modname.Trim());
-                string modfolder = savelocation + "\\" + modname.Trim();
-                //create the directory structure needed for the files
-                Directory.CreateDirectory(modfolder + "\\common\\countries");
-                Directory.CreateDirectory(modfolder + "\\common\\ideas");
-                Directory.CreateDirectory(modfolder + "\\history\\countries");
-                Directory.CreateDirectory(modfolder + "\\common\\cultures");
-                Directory.CreateDirectory(modfolder + "\\common\\religions");
-                Directory.CreateDirectory(modfolder + "\\common\\governments");
-                //write all the configuration files suchs as governments and ideas etc
-                File.WriteAllLines(modfolder + "\\common\\ideas\\00_basic_ideas.txt",BIdeasFile,Encoding.Default);
-                File.WriteAllLines(modfolder + "\\common\\ideas\\00_country_ideas.txt", NIdeasFile1, Encoding.Default);
-                File.WriteAllLines(modfolder + "\\common\\ideas\\zz_group_ideas.txt", NIdeasFile2, Encoding.Default);
-                File.WriteAllLines(modfolder + "\\common\\ideas\\zzz_default_ideas.txt", NIdeasFile3, Encoding.Default);
-                File.WriteAllLines(modfolder + "\\common\\cultures\\00_cultures.txt", CulturesFile, Encoding.Default);
-                File.WriteAllLines(modfolder + "\\common\\religions\\00_religion.txt", ReligionsFile, Encoding.Default);
-                File.WriteAllLines(modfolder + "\\common\\governments\\00_governments.txt", GovernmentFile, Encoding.Default);
-                File.WriteAllLines(modfolder + "\\common\\technology.txt", TechgroupFile, Encoding.Default);
+                //create the directory structure needed for the country files
+                Directory.CreateDirectory(savelocation + "\\" + modname.Trim() + "\\common\\countries");
+                Directory.CreateDirectory(savelocation + "\\" + modname.Trim() + "\\common\\ideas");
+                Directory.CreateDirectory(savelocation + "\\" + modname.Trim() + "\\history\\countries");
+                //copy the idea files if they are not already there
+                try
+                {
+                    File.Copy(eulocation + "\\common\\ideas\\00_country_ideas.txt", savelocation + "\\" + modname.Trim() + "\\common\\ideas\\00_country_ideas.txt");
+                }
+                catch
+                { 
+                    //the file already exists, in this case just do nothing, the savefunction will use the existing file
+                }
+                try
+                {
+                    File.Copy(eulocation + "\\common\\ideas\\zz_group_ideas.txt", savelocation + "\\" + modname.Trim() + "\\common\\ideas\\zz_group_ideas.txt");
+                }
+                catch
+                {
+                    //the file already exists, in this case just do nothing, the savefunction will use the existing file
+                }
                 //save the countries:
                 foreach (CountryData country in savedcountries)
                 {
@@ -1751,82 +1620,6 @@ namespace v1._0
                 }
                 //report back that it is done:
                 MessageBox.Show("Mod " + modname + " is succesfull saved to: " + savelocation);
-            }
-        }
-
-        private void bt_edit_religiongroup_Click(object sender, EventArgs e)
-        {
-            if (cmb_religiongroup.Text != "")
-            {
-                SubEditor editor = new SubEditor("Religions", cmb_religiongroup.Text, "Religion", "Properties", ExtractFirstLevelBlock(ReligionsFile, cmb_religiongroup.Text), new string[] { "defender_of_faith", "crusade_name" }, new string[] { "papacy", "date", "has_patriarchs", "misguided_heretic", "uses_piety", "annex" });
-                editor.ShowDialog();
-                ReligionsFile = InsertBlock(ReligionsFile, editor.Result, cmb_religiongroup.Text);
-                editor.Dispose();
-            }
-            else
-            {
-                MessageBox.Show("Please choose a religiongroup first", "Error");
-            }
-            
-        }
-
-        private void main_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bt_edit_culturegroup_Click(object sender, EventArgs e)
-        {
-            if (cmb_culturegroup.Text != "")
-            {
-                SubEditor editor = new SubEditor("Cultures", cmb_culturegroup.Text, "Culture", "Properties", ExtractFirstLevelBlock(CulturesFile, cmb_culturegroup.Text), new string[] { "graphical_culture", "dynasty_names", "test" }, new string[] { "primary", "dynasty_names", "test" });
-                editor.ShowDialog();
-                CulturesFile = InsertBlock(CulturesFile, editor.Result, cmb_culturegroup.Text);
-                editor.Dispose();
-            }
-            else
-            {
-                MessageBox.Show("Please choose a culturegroup first", "Error");
-            }
-        }
-
-        private void bt_edit_techgroup_Click(object sender, EventArgs e)
-        {
-
-            SubEditor editor = new SubEditor("Techgroups", "", "Techgroup", "Properties", ExtractFirstLevelBlock(TechgroupFile, "groups"), new string[] { }, new string[] { "modifier", "start_level", "cav_to_inf_ratio", "power" });
-            editor.ShowDialog();
-            TechgroupFile = InsertBlock(TechgroupFile, editor.Result, "groups");
-            editor.Dispose();
-            
-        }
-
-        private void bt_edit_governments_Click(object sender, EventArgs e)
-        {
-            if (cmb_government.Text != "")
-            {
-                SubEditor editor = new SubEditor("Government", cmb_government.Text, "Properties", "Properties", ExtractFirstLevelBlock(GovernmentFile, cmb_government.Text), new string[] { "monarchy", "valid_for_new_country", "ai_will_do", "global_spy_defence", "core_creation", "global_manpower_modifier", "land_morale", "army_tradition", "duration", "republic", "republic_name", "tolerance_heretic", "tolerance_heathen" , "royal_marriage", "production_efficiency", "stability_cost_modifier", "allow_convert", "prestige" , "tribal", "nomad", "relations_decay_of_me", "global_prov_trade_power_modifier", "global_revolt_risk", "technology_cost"}, new string[] { "factor", "modifier" });
-                editor.ShowDialog();
-                GovernmentFile = InsertBlock(GovernmentFile, editor.Result, cmb_government.Text);
-                editor.Dispose();
-            }
-            else
-            {
-                MessageBox.Show("Please choose a Government first", "Error");
-            }
-        }
-
-        private void bt_edit_idea_Click(object sender, EventArgs e)
-        {
-            if (cmb_Bidea.Text != "")
-            {
-                SubEditor editor = new SubEditor("Idea Group",cmb_Bidea.Text,"Ideas","P roperties", ExtractFirstLevelBlock(BIdeasFile, cmb_Bidea.Text), new string[] { "category", "bonus", "ai_will_do", "trigger" }, options.modifiers);
-                editor.ShowDialog();
-                BIdeasFile = InsertBlock(BIdeasFile, editor.Result, cmb_Bidea.Text);
-                editor.Dispose();
-            }
-            else
-            {
-                MessageBox.Show("Please choose an ideagroup first");
             }
         }
     }

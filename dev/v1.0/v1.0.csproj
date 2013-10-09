@@ -74,37 +74,20 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="NationalIdeaEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NationalIdeaEditor.Designer.cs">
-      <DependentUpon>NationalIdeaEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NationalIdeaGroupEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NationalIdeaGroupEditor.Designer.cs">
-      <DependentUpon>NationalIdeaGroupEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelectCountry.cs">
+    <Compile Include="SubEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SelectCountry.Designer.cs">
-      <DependentUpon>SelectCountry.cs</DependentUpon>
+    <Compile Include="SubEditor.Designer.cs">
+      <DependentUpon>SubEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="SyntaxOptions.cs" />
     <EmbeddedResource Include="InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NationalIdeaEditor.resx">
-      <DependentUpon>NationalIdeaEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NationalIdeaGroupEditor.resx">
-      <DependentUpon>NationalIdeaGroupEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -115,8 +98,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SelectCountry.resx">
-      <DependentUpon>SelectCountry.cs</DependentUpon>
+    <EmbeddedResource Include="SubEditor.resx">
+      <DependentUpon>SubEditor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

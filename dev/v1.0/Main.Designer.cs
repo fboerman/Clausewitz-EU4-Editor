@@ -53,7 +53,6 @@
             this.txt_mercantilism = new System.Windows.Forms.TextBox();
             this.lbl_mercantilism = new System.Windows.Forms.Label();
             this.cmb_nationalideas = new System.Windows.Forms.ComboBox();
-            this.bt_edit_nationalidea = new System.Windows.Forms.Button();
             this.bt_new_nationalideasgroup = new System.Windows.Forms.Button();
             this.lbl_nationalideagroup = new System.Windows.Forms.Label();
             this.lbl_nationalideas = new System.Windows.Forms.Label();
@@ -66,6 +65,7 @@
             this.bt_down = new System.Windows.Forms.Button();
             this.bt_delete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmb_idea9 = new System.Windows.Forms.ComboBox();
             this.cmb_idea8 = new System.Windows.Forms.ComboBox();
             this.cmb_idea7 = new System.Windows.Forms.ComboBox();
             this.cmb_idea6 = new System.Windows.Forms.ComboBox();
@@ -75,17 +75,13 @@
             this.cmb_idea2 = new System.Windows.Forms.ComboBox();
             this.cmb_idea1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.bt_new_religion = new System.Windows.Forms.Button();
             this.lbl_preferedreligion = new System.Windows.Forms.Label();
             this.bt_edit_religiongroup = new System.Windows.Forms.Button();
             this.bt_new_religiongroup = new System.Windows.Forms.Button();
             this.cmb_prefered_religion = new System.Windows.Forms.ComboBox();
-            this.bt_edit_religion = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.bt_new_culture = new System.Windows.Forms.Button();
             this.bt_edit_culturegroup = new System.Windows.Forms.Button();
             this.bt_new_culturegroup = new System.Windows.Forms.Button();
-            this.bt_edit_culture = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lbl_national_ideas = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -97,8 +93,11 @@
             this.bt_save_mod = new System.Windows.Forms.Button();
             this.bt_new_techgroup = new System.Windows.Forms.Button();
             this.bt_edit_techgroup = new System.Windows.Forms.Button();
+            this.bt_new_idea = new System.Windows.Forms.Button();
+            this.bt_edit_idea = new System.Windows.Forms.Button();
             this.bt_new_government = new System.Windows.Forms.Button();
-            this.bt_edit_government = new System.Windows.Forms.Button();
+            this.bt_edit_governments = new System.Windows.Forms.Button();
+            this.cmb_Bidea = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -327,17 +326,6 @@
             this.cmb_nationalideas.Size = new System.Drawing.Size(122, 21);
             this.cmb_nationalideas.TabIndex = 42;
             // 
-            // bt_edit_nationalidea
-            // 
-            this.bt_edit_nationalidea.Enabled = false;
-            this.bt_edit_nationalidea.Location = new System.Drawing.Point(900, 74);
-            this.bt_edit_nationalidea.Name = "bt_edit_nationalidea";
-            this.bt_edit_nationalidea.Size = new System.Drawing.Size(75, 23);
-            this.bt_edit_nationalidea.TabIndex = 43;
-            this.bt_edit_nationalidea.Text = "Edit";
-            this.bt_edit_nationalidea.UseVisualStyleBackColor = true;
-            this.bt_edit_nationalidea.Click += new System.EventHandler(this.bt_edit_nationalidea_Click);
-            // 
             // bt_new_nationalideasgroup
             // 
             this.bt_new_nationalideasgroup.Enabled = false;
@@ -451,6 +439,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmb_idea9);
             this.groupBox1.Controls.Add(this.cmb_idea8);
             this.groupBox1.Controls.Add(this.cmb_idea7);
             this.groupBox1.Controls.Add(this.cmb_idea6);
@@ -459,12 +448,21 @@
             this.groupBox1.Controls.Add(this.cmb_idea3);
             this.groupBox1.Controls.Add(this.cmb_idea2);
             this.groupBox1.Controls.Add(this.cmb_idea1);
-            this.groupBox1.Location = new System.Drawing.Point(242, 122);
+            this.groupBox1.Location = new System.Drawing.Point(242, 116);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(160, 245);
+            this.groupBox1.Size = new System.Drawing.Size(160, 279);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Historical Idea Groups";
+            // 
+            // cmb_idea9
+            // 
+            this.cmb_idea9.Enabled = false;
+            this.cmb_idea9.FormattingEnabled = true;
+            this.cmb_idea9.Location = new System.Drawing.Point(19, 245);
+            this.cmb_idea9.Name = "cmb_idea9";
+            this.cmb_idea9.Size = new System.Drawing.Size(122, 21);
+            this.cmb_idea9.TabIndex = 60;
             // 
             // cmb_idea8
             // 
@@ -540,12 +538,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.bt_new_religion);
             this.groupBox2.Controls.Add(this.lbl_preferedreligion);
             this.groupBox2.Controls.Add(this.bt_edit_religiongroup);
             this.groupBox2.Controls.Add(this.bt_new_religiongroup);
             this.groupBox2.Controls.Add(this.cmb_prefered_religion);
-            this.groupBox2.Controls.Add(this.bt_edit_religion);
             this.groupBox2.Controls.Add(this.lbl_religiongroup);
             this.groupBox2.Controls.Add(this.lbl_religion);
             this.groupBox2.Controls.Add(this.cmb_religion);
@@ -556,16 +552,6 @@
             this.groupBox2.TabIndex = 60;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Religion";
-            // 
-            // bt_new_religion
-            // 
-            this.bt_new_religion.Enabled = false;
-            this.bt_new_religion.Location = new System.Drawing.Point(325, 46);
-            this.bt_new_religion.Name = "bt_new_religion";
-            this.bt_new_religion.Size = new System.Drawing.Size(75, 23);
-            this.bt_new_religion.TabIndex = 72;
-            this.bt_new_religion.Text = "New";
-            this.bt_new_religion.UseVisualStyleBackColor = true;
             // 
             // lbl_preferedreligion
             // 
@@ -585,6 +571,7 @@
             this.bt_edit_religiongroup.TabIndex = 71;
             this.bt_edit_religiongroup.Text = "Edit";
             this.bt_edit_religiongroup.UseVisualStyleBackColor = true;
+            this.bt_edit_religiongroup.Click += new System.EventHandler(this.bt_edit_religiongroup_Click);
             // 
             // bt_new_religiongroup
             // 
@@ -605,23 +592,11 @@
             this.cmb_prefered_religion.Size = new System.Drawing.Size(121, 21);
             this.cmb_prefered_religion.TabIndex = 34;
             // 
-            // bt_edit_religion
-            // 
-            this.bt_edit_religion.Enabled = false;
-            this.bt_edit_religion.Location = new System.Drawing.Point(242, 46);
-            this.bt_edit_religion.Name = "bt_edit_religion";
-            this.bt_edit_religion.Size = new System.Drawing.Size(75, 23);
-            this.bt_edit_religion.TabIndex = 69;
-            this.bt_edit_religion.Text = "Edit";
-            this.bt_edit_religion.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.bt_new_culture);
             this.groupBox3.Controls.Add(this.bt_edit_culturegroup);
             this.groupBox3.Controls.Add(this.cmb_culturegroup);
             this.groupBox3.Controls.Add(this.bt_new_culturegroup);
-            this.groupBox3.Controls.Add(this.bt_edit_culture);
             this.groupBox3.Controls.Add(this.lbl_culturegroup);
             this.groupBox3.Controls.Add(this.cmb_culture);
             this.groupBox3.Controls.Add(this.lbl_culture);
@@ -632,16 +607,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Primary Culture";
             // 
-            // bt_new_culture
-            // 
-            this.bt_new_culture.Enabled = false;
-            this.bt_new_culture.Location = new System.Drawing.Point(325, 46);
-            this.bt_new_culture.Name = "bt_new_culture";
-            this.bt_new_culture.Size = new System.Drawing.Size(75, 23);
-            this.bt_new_culture.TabIndex = 68;
-            this.bt_new_culture.Text = "New";
-            this.bt_new_culture.UseVisualStyleBackColor = true;
-            // 
             // bt_edit_culturegroup
             // 
             this.bt_edit_culturegroup.Enabled = false;
@@ -651,6 +616,7 @@
             this.bt_edit_culturegroup.TabIndex = 67;
             this.bt_edit_culturegroup.Text = "Edit";
             this.bt_edit_culturegroup.UseVisualStyleBackColor = true;
+            this.bt_edit_culturegroup.Click += new System.EventHandler(this.bt_edit_culturegroup_Click);
             // 
             // bt_new_culturegroup
             // 
@@ -661,16 +627,6 @@
             this.bt_new_culturegroup.TabIndex = 66;
             this.bt_new_culturegroup.Text = "New";
             this.bt_new_culturegroup.UseVisualStyleBackColor = true;
-            // 
-            // bt_edit_culture
-            // 
-            this.bt_edit_culture.Enabled = false;
-            this.bt_edit_culture.Location = new System.Drawing.Point(242, 46);
-            this.bt_edit_culture.Name = "bt_edit_culture";
-            this.bt_edit_culture.Size = new System.Drawing.Size(75, 23);
-            this.bt_edit_culture.TabIndex = 65;
-            this.bt_edit_culture.Text = "Edit";
-            this.bt_edit_culture.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -790,6 +746,28 @@
             this.bt_edit_techgroup.TabIndex = 73;
             this.bt_edit_techgroup.Text = "Edit";
             this.bt_edit_techgroup.UseVisualStyleBackColor = true;
+            this.bt_edit_techgroup.Click += new System.EventHandler(this.bt_edit_techgroup_Click);
+            // 
+            // bt_new_idea
+            // 
+            this.bt_new_idea.Enabled = false;
+            this.bt_new_idea.Location = new System.Drawing.Point(323, 401);
+            this.bt_new_idea.Name = "bt_new_idea";
+            this.bt_new_idea.Size = new System.Drawing.Size(75, 23);
+            this.bt_new_idea.TabIndex = 77;
+            this.bt_new_idea.Text = "New";
+            this.bt_new_idea.UseVisualStyleBackColor = true;
+            // 
+            // bt_edit_idea
+            // 
+            this.bt_edit_idea.Enabled = false;
+            this.bt_edit_idea.Location = new System.Drawing.Point(242, 401);
+            this.bt_edit_idea.Name = "bt_edit_idea";
+            this.bt_edit_idea.Size = new System.Drawing.Size(75, 23);
+            this.bt_edit_idea.TabIndex = 78;
+            this.bt_edit_idea.Text = "Edit";
+            this.bt_edit_idea.UseVisualStyleBackColor = true;
+            this.bt_edit_idea.Click += new System.EventHandler(this.bt_edit_idea_Click);
             // 
             // bt_new_government
             // 
@@ -797,27 +775,40 @@
             this.bt_new_government.Location = new System.Drawing.Point(983, 338);
             this.bt_new_government.Name = "bt_new_government";
             this.bt_new_government.Size = new System.Drawing.Size(75, 23);
-            this.bt_new_government.TabIndex = 76;
+            this.bt_new_government.TabIndex = 80;
             this.bt_new_government.Text = "New";
             this.bt_new_government.UseVisualStyleBackColor = true;
             // 
-            // bt_edit_government
+            // bt_edit_governments
             // 
-            this.bt_edit_government.Enabled = false;
-            this.bt_edit_government.Location = new System.Drawing.Point(900, 338);
-            this.bt_edit_government.Name = "bt_edit_government";
-            this.bt_edit_government.Size = new System.Drawing.Size(75, 23);
-            this.bt_edit_government.TabIndex = 75;
-            this.bt_edit_government.Text = "Edit";
-            this.bt_edit_government.UseVisualStyleBackColor = true;
+            this.bt_edit_governments.Enabled = false;
+            this.bt_edit_governments.Location = new System.Drawing.Point(900, 338);
+            this.bt_edit_governments.Name = "bt_edit_governments";
+            this.bt_edit_governments.Size = new System.Drawing.Size(75, 23);
+            this.bt_edit_governments.TabIndex = 79;
+            this.bt_edit_governments.Text = "Edit";
+            this.bt_edit_governments.UseVisualStyleBackColor = true;
+            this.bt_edit_governments.Click += new System.EventHandler(this.bt_edit_governments_Click);
+            // 
+            // cmb_Bidea
+            // 
+            this.cmb_Bidea.Enabled = false;
+            this.cmb_Bidea.FormattingEnabled = true;
+            this.cmb_Bidea.Location = new System.Drawing.Point(115, 403);
+            this.cmb_Bidea.Name = "cmb_Bidea";
+            this.cmb_Bidea.Size = new System.Drawing.Size(121, 21);
+            this.cmb_Bidea.TabIndex = 81;
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1085, 480);
+            this.Controls.Add(this.cmb_Bidea);
             this.Controls.Add(this.bt_new_government);
-            this.Controls.Add(this.bt_edit_government);
+            this.Controls.Add(this.bt_edit_governments);
+            this.Controls.Add(this.bt_edit_idea);
+            this.Controls.Add(this.bt_new_idea);
             this.Controls.Add(this.bt_new_techgroup);
             this.Controls.Add(this.bt_edit_techgroup);
             this.Controls.Add(this.bt_save_mod);
@@ -830,7 +821,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bt_edit_nationalideasgroup);
             this.Controls.Add(this.bt_new_nationalideasgroup);
-            this.Controls.Add(this.bt_edit_nationalidea);
             this.Controls.Add(this.txt_mercantilism);
             this.Controls.Add(this.lbl_mercantilism);
             this.Controls.Add(this.txt_capital);
@@ -852,6 +842,7 @@
             this.Controls.Add(this.groupBox4);
             this.Name = "main";
             this.Text = "Clausewitz Country editor (eu4)";
+            this.Load += new System.EventHandler(this.main_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -893,7 +884,6 @@
         private System.Windows.Forms.TextBox txt_mercantilism;
         private System.Windows.Forms.Label lbl_mercantilism;
         private System.Windows.Forms.ComboBox cmb_nationalideas;
-        private System.Windows.Forms.Button bt_edit_nationalidea;
         private System.Windows.Forms.Button bt_new_nationalideasgroup;
         private System.Windows.Forms.Label lbl_nationalideagroup;
         private System.Windows.Forms.Label lbl_nationalideas;
@@ -926,19 +916,19 @@
         private System.Windows.Forms.Button bt_exit;
         private System.Windows.Forms.Label lbl_preferedreligion;
         private System.Windows.Forms.ComboBox cmb_prefered_religion;
-        private System.Windows.Forms.Button bt_new_religion;
         private System.Windows.Forms.Button bt_edit_religiongroup;
         private System.Windows.Forms.Button bt_new_religiongroup;
-        private System.Windows.Forms.Button bt_edit_religion;
-        private System.Windows.Forms.Button bt_new_culture;
         private System.Windows.Forms.Button bt_edit_culturegroup;
         private System.Windows.Forms.Button bt_new_culturegroup;
-        private System.Windows.Forms.Button bt_edit_culture;
         private System.Windows.Forms.Button bt_save_mod;
         private System.Windows.Forms.Button bt_new_techgroup;
         private System.Windows.Forms.Button bt_edit_techgroup;
+        private System.Windows.Forms.Button bt_new_idea;
+        private System.Windows.Forms.Button bt_edit_idea;
         private System.Windows.Forms.Button bt_new_government;
-        private System.Windows.Forms.Button bt_edit_government;
+        private System.Windows.Forms.Button bt_edit_governments;
+        private System.Windows.Forms.ComboBox cmb_Bidea;
+        private System.Windows.Forms.ComboBox cmb_idea9;
     }
 }
 
