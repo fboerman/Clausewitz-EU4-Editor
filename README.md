@@ -10,17 +10,20 @@ Version 0.4 is a rework of a lot of features, the code is a lot more efficient n
 Instructions
 ------------
 - Click load game and select the game folder
+
 country modding:
 - Select a country and click load country
 - Adjust properties to something you want (or leave everything default if you want to see if the editor creates proper mod files)
 - Click save country
 - Repeat for other countries
+
 subeditors:
 - click the edit button after choosing a group in the dropdown menu
 - use the dropdown menus to select a propertie block to edit. if the bottom activates then there the top one is a block and you can make a subselection with the second one.
 - you dont have to select a propertie, but if you start writing for the top block then that whole block is overwritten
 - click save
 - click exit
+
 final modmaking:
 - Click save mod and give your mod a name and specify a save location
 - all done!
