@@ -4,7 +4,9 @@ Clausewitz-EU4-Editor
 This is a mod editor for the grand strategy game Europa Universalis 4 made by Paradox Interactive. This editor will first focuses on country editing with subeditors available for culture, government, ideas etc editing.
 The editor is written in C# and available under the GPL v2 license. You need the .net framework 4.5 in order to run it.
 
-Current version is 0.4. you can read, edit and save all country,government,ideas,religions and techgroup properties.
+Current version is 0.4.
+
+you can read, edit and save all country,government,ideas,religions and techgroup properties.
 Version 0.4 is a rework of a lot of features, the code is a lot more efficient now.
 
 Instructions
